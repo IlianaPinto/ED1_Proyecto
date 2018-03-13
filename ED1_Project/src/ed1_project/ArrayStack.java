@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ed1_project;
 
-/**
- *
- * @author HP
- */
 public class ArrayStack implements StackInterface{
-    public Object[] array;
+    public Posicion[] array;
     public int size;
     public int cap;
 
@@ -19,13 +11,13 @@ public class ArrayStack implements StackInterface{
 
     public ArrayStack(int cap) {
         this.cap = cap;
-        array = new Object[cap];
+        array = new Posicion[cap];
         size = 0;
     }
 
     @Override
     public void clear() {
-        array = new Object[cap];
+        array = new Posicion[cap];
     }
 
     @Override
@@ -34,7 +26,7 @@ public class ArrayStack implements StackInterface{
     }
 
     @Override
-    public boolean push(Object data) {
+    public boolean push(Posicion data) {
         if (size < cap) {
             array[size] = data;
             size++;
@@ -45,10 +37,10 @@ public class ArrayStack implements StackInterface{
     }
 
     @Override
-    public Object Pop() {
+    public Posicion Pop() {
         if (size > 0) {
             size--;
-            Object temp = array[size];
+            Posicion temp = array[size];
             array[size] = null;
             return temp;
         }else{
@@ -57,7 +49,7 @@ public class ArrayStack implements StackInterface{
     }
 
     @Override
-    public Object Top() {
+    public Posicion Top() {
         if (size > 0) {
             return array[size-1];
         } else {
@@ -68,7 +60,7 @@ public class ArrayStack implements StackInterface{
     @Override
     public void Print() {
         for (int i = 0; i < size; i++) {
-            System.out.println("["+array[i]+"] ");
+            System.out.println("["+array[i].toString()+"] ");
         }
     }
 }

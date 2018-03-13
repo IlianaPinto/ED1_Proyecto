@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -230,7 +231,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       File fichero = null;
+        File fichero = null;
         FileReader fr = null;
         BufferedReader br = null;
         text_area1.setText("");
@@ -256,14 +257,14 @@ public class Main extends javax.swing.JFrame {
                     sc.useDelimiter(",");
                     size = sc.nextInt();
                     matriz = new int[size][size];
-                    int i = 0,j = 0;
-                    while (sc.hasNext()) {                        
-                        if(i < size && j < size){
+                    int i = 0, j = 0;
+                    while (sc.hasNext()) {
+                        if (i < size && j < size) {
                             matriz[i][j] = sc.nextInt();
-                            if (j == size-1) {
-                                i +=1;
-                                j=0;
-                            }else{
+                            if (j == size - 1) {
+                                i += 1;
+                                j = 0;
+                            } else {
                                 j++;
                             }
                         }
@@ -276,13 +277,17 @@ public class Main extends javax.swing.JFrame {
                 for (int j = 0; j < size; j++) {
                     text_area1.setForeground(Color.WHITE);
                     text_area1.setBackground(Color.BLACK);
-                    text_area1.append(" [ "+matriz[i][j]+" ] ");
-                    
-                    
+                    if (matriz[i][j] == 1) {
+                        text_area1.append(" - ");
+                    } else {
+                        text_area1.append(" • ");
+                    }
+                    //text_area1.append(" [ " + matriz[i][j] + " ] ");
+
                 }
                 text_area1.append("\n");
             }
-            
+
         } catch (HeadlessException | IOException e) {
             e.printStackTrace();
         }
@@ -294,7 +299,83 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
+        try {
+
+            boolean salida = true;
+
+            ArrayStack laberinto = new ArrayStack(200);
+            laberinto.push(new Posicion(0, 0, matriz[0][0] + ""));
+            laberinto.push(new Posicion(1, 1, matriz[1][1] + ""));
+            laberinto.push(new Posicion(2, 0, matriz[2][0] + ""));
+            matriz[1][0] = 8;
+            do {      
+                int cont = 0;
+                for (int i = 0; i < matriz.length; i++) {
+                    for (int j = 0; j < matriz.length; j++) {
+                        if (matriz[i][j] == 0) {
+                            cont++;
+                        }
+                    }
+                }
+                if (cont == 0) {
+                    break;
+                }
+
+                if(matriz[laberinto.Top().getPosicioni()][laberinto.Top().getPosicionj()] != 0){
+                    laberinto.Top().setCaracter("8");
+                }
+                
+                if (!"0".equals(laberinto.Top().getCaracter())) {
+                    laberinto.Pop();
+                } else if (laberinto.Top().getPosicionj() == matriz.length - 1) {
+                    matriz[laberinto.Top().getPosicioni()][laberinto.Top().getPosicionj()] = 9;
+                    salida = false;
+                } else {
+                    Posicion temporal = laberinto.Top();
+                    matriz[laberinto.Top().getPosicioni()][laberinto.Top().getPosicionj()] = 8;
+
+                    if (temporal.getPosicioni() - 1 >= 0) {
+                        laberinto.push(new Posicion(temporal.getPosicioni() - 1, temporal.getPosicionj(), matriz[temporal.getPosicioni() - 1][temporal.getPosicionj()] + ""));
+                    }
+                    if (temporal.getPosicionj() + 1 < matriz.length) {
+                        laberinto.push(new Posicion(temporal.getPosicioni(), temporal.getPosicionj() + 1, matriz[temporal.getPosicioni()][temporal.getPosicionj() + 1] + ""));
+                    }
+                    if (temporal.getPosicioni() + 1 < matriz.length) {
+                        laberinto.push(new Posicion(temporal.getPosicioni() + 1, temporal.getPosicionj(), matriz[temporal.getPosicioni() + 1][temporal.getPosicionj()] + ""));
+                    }
+                    if (temporal.getPosicionj() - 1 > 0) {
+                        laberinto.push(new Posicion(temporal.getPosicioni(), temporal.getPosicionj() - 1, matriz[temporal.getPosicioni()][temporal.getPosicionj() - 1] + ""));
+                    }
+                }
+            } while (!laberinto.isEmpty() && salida);
+            if (salida) {
+                JOptionPane.showMessageDialog(this, "No se ha encontrado la ruta de salida X");
+            } else {
+                JOptionPane.showMessageDialog(this, "Se ha encontrado la ruta de salida ☺");
+            }
+
+            text_area1.setText("");
+            for (int i = 0; i < matriz.length; i++) {
+                for (int j = 0; j < matriz.length; j++) {
+                    text_area1.setForeground(Color.WHITE);
+                    text_area1.setBackground(Color.BLACK);
+                    if (matriz[i][j] == 1) {
+                        text_area1.append(" - ");
+                    } else if (matriz[i][j] == 0) {
+                        text_area1.append(" • ");
+                    } else if (matriz[i][j] == 8) {
+                        text_area1.append(" * ");
+                    } else {
+                        text_area1.append(" E ");
+                    }
+                }
+                text_area1.append("\n");
+            }
+        } catch (Exception e) {
+               JOptionPane.showMessageDialog(this, "No se ha seleccionado ningun archivo");
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -349,6 +430,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextArea text_area1;
     // End of variables declaration//GEN-END:variables
 int[][] matriz;
-
 
 }
