@@ -5,6 +5,7 @@ public class ArrayList implements ListaInterface{
     Object[] lista;
     int AvailPos;
     int size;
+    int length;
 
     public ArrayList() {
     }
@@ -13,6 +14,7 @@ public class ArrayList implements ListaInterface{
         this.size = size;
         lista = new Object[size];
         AvailPos = 0;
+        length = 0;
     }
 
     @Override
@@ -21,6 +23,8 @@ public class ArrayList implements ListaInterface{
             if (pos == AvailPos) {
                 lista[pos] = data;
                 AvailPos++;
+                length++;
+                
             }else{
                 for (int i = AvailPos; i >= pos; i--) {
                     lista[i] = lista[i-1];
@@ -33,6 +37,8 @@ public class ArrayList implements ListaInterface{
             return false;
         }
     }
+    
+    
 
     @Override
     public int find(Object data) {
@@ -61,6 +67,7 @@ public class ArrayList implements ListaInterface{
             }
             AvailPos--;
             lista[AvailPos] = null;
+            length--;
             return true;
         }else{
             return false;
@@ -71,6 +78,7 @@ public class ArrayList implements ListaInterface{
     public void clear() {
         lista = new Object[size];
         AvailPos = 0;
+        length = 0;
     }
 
     @Override
@@ -89,5 +97,19 @@ public class ArrayList implements ListaInterface{
     @Override
     public Object next(int pos) {
         return get(pos+1);
+    }
+
+    @Override
+    public boolean insert(Object data) {
+        lista[AvailPos] = data;
+        AvailPos++;
+        length++;
+        return true;
+    }
+
+    @Override
+    public boolean set(int pos, Object data) {
+        lista[pos] = data;
+        return true;
     }
 }

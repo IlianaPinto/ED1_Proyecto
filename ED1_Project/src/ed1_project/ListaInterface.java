@@ -18,4 +18,6 @@ public interface ListaInterface {
     public Object first();
     public void print();
     public Object next(int pos);
+    public boolean insert(Object data); 
+    public boolean set(int pos, Object data);
 }
