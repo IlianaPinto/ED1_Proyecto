@@ -112,4 +112,9 @@ public class ArrayList implements ListaInterface{
         lista[pos] = data;
         return true;
     }
+
+    @Override
+    public boolean isEmpty() {
+        return length == 0;
+    }
 }

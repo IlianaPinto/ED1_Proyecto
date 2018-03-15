@@ -59,6 +59,10 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         calcu_text = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        text_huffman = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -391,18 +395,51 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Solucion Matematica", jPanel3);
 
+        jButton20.setText("Seleccionar Archivo");
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
+
+        jButton21.setText("Comprimir Archivo");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+
+        text_huffman.setColumns(20);
+        text_huffman.setRows(5);
+        jScrollPane3.setViewportView(text_huffman);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 628, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton21)))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab3", jPanel4);
+        jTabbedPane1.addTab("Compresion de Archivos", jPanel4);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -524,24 +561,7 @@ public class Main extends javax.swing.JFrame {
                     text_area1.append("\n");
                 }*/
                 Scanner sc = null;
-                try {
-                    sc = new Scanner(fichero);
-                    sc.useDelimiter(",");
-                    size = sc.nextInt();
-                    matriz = new int[size][size];
-                    int i = 0, j = 0;
-                    while (sc.hasNext()) {
-                        if (i < size && j < size) {
-                            matriz[i][j] = sc.nextInt();
-                            if (j == size - 1) {
-                                i += 1;
-                                j = 0;
-                            } else {
-                                j++;
-                            }
-                        }
-                    }
-                } catch (Exception e) {
+                try  catch (Exception e) {
                 }
                 sc.close();
             }
@@ -571,9 +591,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
         try {
-
             boolean salida = true;
 
             ArrayStack laberinto = new ArrayStack(200);
@@ -887,6 +905,83 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton17ActionPerformed
 
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        File fichero = null;
+        
+        Scanner sc = null;
+        try {
+            JFileChooser jfc = new JFileChooser();
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Texto", "txt");
+            jfc.setFileFilter(filtro);
+            int seleccion = jfc.showOpenDialog(this);
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                fichero = jfc.getSelectedFile();
+                sc = new Scanner(fichero);
+                texto = sc.nextLine();
+            }
+            sc.close();
+        } catch (Exception e) {
+        }
+        
+        text_huffman.append(texto);
+        
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        try {
+            ArrayList lista = new ArrayList(10000);
+            ArrayList l = new ArrayList();
+            
+            for (int i = 0; i < texto.length(); i++) {
+                if(l.isEmpty()){
+                   
+                    l.insert(new Caracter(texto.charAt(i)+""));
+                }else{
+                   for (int j = 0; j < lista.length; j++) {
+                    //    System.out.println("5");
+                        if((texto.charAt(i)+"").equals(((Caracter)l.get(j)).getCaracter()+"")){
+                    //        System.out.println("6");
+                           int numero = ((Caracter)l.get(j)).getNumero() +1;
+                           ((Caracter)l.get(j)).setNumero(numero);
+                        }else{
+                      //      System.out.println("7");
+                            l.insert(new Caracter(texto.charAt(i)+""));
+                        }
+                    } 
+                }
+            }
+            /*for (int i = 0; i < texto.length(); i++) {
+               // System.out.println("simon");
+                if (lista.isEmpty()) {
+                //    System.out.println("simon2");
+                    lista.insert(new Caracter(texto.charAt(i)+""));
+                }else{
+                 //   System.out.println("simon3");
+                    for (int j = 0; j < lista.length; j++) {
+                    //    System.out.println("5");
+                        if((texto.charAt(i)+"").equals(((Caracter)lista.get(j)).getCaracter())){
+                    //        System.out.println("6");
+                           int numero = ((Caracter)lista.get(j)).getNumero() +1;
+                           ((Caracter)lista.get(j)).setNumero(numero);
+                        }else{
+                      //      System.out.println("7");
+                            lista.insert(new Caracter(texto.charAt(i)+""));
+                        }
+                    }
+                }
+            }*/
+            //fin for
+           /* for (int i = 0; i < lista.length; i++) {
+                System.out.print(((Caracter)lista.get(i)).getCaracter());
+                System.out.print(" "+((Caracter)lista.get(i)).getNumero());
+                System.out.println();
+            }*/
+            System.out.println(l.size);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton21ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -936,6 +1031,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -955,9 +1052,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea text_area1;
+    private javax.swing.JTextArea text_huffman;
     // End of variables declaration//GEN-END:variables
 int[][] matriz;
-
+String texto = "";
 }

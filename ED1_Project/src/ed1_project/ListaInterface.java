@@ -20,4 +20,5 @@ public interface ListaInterface {
     public Object next(int pos);
     public boolean insert(Object data); 
     public boolean set(int pos, Object data);
+    public boolean isEmpty();
 }
