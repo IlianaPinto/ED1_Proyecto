@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
@@ -561,7 +562,24 @@ public class Main extends javax.swing.JFrame {
                     text_area1.append("\n");
                 }*/
                 Scanner sc = null;
-                try  catch (Exception e) {
+                try {
+                    sc = new Scanner(fichero);
+                    sc.useDelimiter(",");
+                    size = sc.nextInt();
+                    matriz = new int[size][size];
+                    int i = 0, j = 0;
+                    while (sc.hasNext()) {
+                        if (i < size && j < size) {
+                            matriz[i][j] = sc.nextInt();
+                            if (j == size - 1) {
+                                i += 1;
+                                j = 0;
+                            } else {
+                                j++;
+                            }
+                        }
+                    }
+                } catch (Exception e) {
                 }
                 sc.close();
             }
@@ -734,7 +752,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         String cadena = calcu_text.getText();
-        ArrayList lista = new ArrayList(100);
+        List lista = new List(100);
         try {
             String acum = "";
             for (int i = 0; i < cadena.length(); i++) {
@@ -929,54 +947,36 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         try {
-            ArrayList lista = new ArrayList(10000);
+            List lista = new List(200);
             ArrayList l = new ArrayList();
-            
             for (int i = 0; i < texto.length(); i++) {
-                if(l.isEmpty()){
-                   
-                    l.insert(new Caracter(texto.charAt(i)+""));
-                }else{
-                   for (int j = 0; j < lista.length; j++) {
-                    //    System.out.println("5");
-                        if((texto.charAt(i)+"").equals(((Caracter)l.get(j)).getCaracter()+"")){
-                    //        System.out.println("6");
-                           int numero = ((Caracter)l.get(j)).getNumero() +1;
-                           ((Caracter)l.get(j)).setNumero(numero);
-                        }else{
-                      //      System.out.println("7");
-                            l.insert(new Caracter(texto.charAt(i)+""));
-                        }
-                    } 
-                }
+                l.add(texto.charAt(i));
             }
-            /*for (int i = 0; i < texto.length(); i++) {
-               // System.out.println("simon");
-                if (lista.isEmpty()) {
-                //    System.out.println("simon2");
-                    lista.insert(new Caracter(texto.charAt(i)+""));
-                }else{
-                 //   System.out.println("simon3");
-                    for (int j = 0; j < lista.length; j++) {
-                    //    System.out.println("5");
-                        if((texto.charAt(i)+"").equals(((Caracter)lista.get(j)).getCaracter())){
-                    //        System.out.println("6");
-                           int numero = ((Caracter)lista.get(j)).getNumero() +1;
-                           ((Caracter)lista.get(j)).setNumero(numero);
-                        }else{
-                      //      System.out.println("7");
-                            lista.insert(new Caracter(texto.charAt(i)+""));
-                        }
+            
+            for (int i = 0; i < l.size(); i++) {
+                int cont = 1;
+                for (int j = i+1; j < l.size(); j++) {
+                    if (((char)l.get(i)) == ((char)l.get(j)) && ((char)l.get(i)) != '♀') {
+                        cont++;
+                    }
+                    
+                }
+                char letra = ((char)l.get(i));  
+                if (((char)l.get(i)) != '♀') {
+                    lista.insert(new Caracter((char)l.get(i),cont));
+                }
+                for (int j = 0; j < l.size(); j++) {
+                    if(((char)l.get(j)) == letra){
+                        l.set(j, '♀');
                     }
                 }
-            }*/
-            //fin for
-           /* for (int i = 0; i < lista.length; i++) {
+            }  
+            for (int i = 0; i < lista.length; i++) {
                 System.out.print(((Caracter)lista.get(i)).getCaracter());
                 System.out.print(" "+((Caracter)lista.get(i)).getNumero());
-                System.out.println();
-            }*/
-            System.out.println(l.size);
+                System.out.println("");
+                
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

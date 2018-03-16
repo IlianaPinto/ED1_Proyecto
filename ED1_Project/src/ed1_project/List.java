@@ -1,16 +1,16 @@
 package ed1_project;
 
 
-public class ArrayList implements ListaInterface{
+public class List implements ListaInterface{
     Object[] lista;
     int AvailPos;
     int size;
     int length;
 
-    public ArrayList() {
+    public List() {
     }
 
-    public ArrayList(int size) {
+    public List(int size) {
         this.size = size;
         lista = new Object[size];
         AvailPos = 0;
