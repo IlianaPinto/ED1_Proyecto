@@ -4,8 +4,8 @@ package ed1_project;
 public class Arbol {
     private Nodo raiz;
 
-    public Arbol(Object data) {
-        this.raiz = new Nodo(data); 
+    public Arbol(Nodo data) {
+        this.raiz = data; 
     }
 
     public Nodo getRaiz() {

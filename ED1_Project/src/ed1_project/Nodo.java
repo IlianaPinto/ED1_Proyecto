@@ -2,20 +2,20 @@
 package ed1_project;
 
 public class Nodo {
-    private Object data;
+    private Caracter data;
     private Nodo padre;
     private Nodo hojaI;
     private Nodo holaD;
 
-    public Nodo(Object data) {
+    public Nodo(Caracter data) {
         this.data = data;
     }
 
-    public Object getData() {
+    public Caracter getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(Caracter data) {
         this.data = data;
     }
 

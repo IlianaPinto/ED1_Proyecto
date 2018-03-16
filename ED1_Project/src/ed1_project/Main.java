@@ -410,6 +410,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        text_huffman.setEditable(false);
         text_huffman.setColumns(20);
         text_huffman.setRows(5);
         jScrollPane3.setViewportView(text_huffman);
@@ -789,7 +790,7 @@ public class Main extends javax.swing.JFrame {
                             lista.delete(i);
                             seguir = true;
                             break;
-                        }else{
+                        } else {
                             seguir = false;
                         }
                     }
@@ -804,7 +805,7 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             } while (multiplicar);
-            
+
             //divide
             boolean dividir = true;
             do {
@@ -826,7 +827,7 @@ public class Main extends javax.swing.JFrame {
                             lista.delete(i);
                             seguir = true;
                             break;
-                        }else{
+                        } else {
                             seguir = false;
                         }
                     }
@@ -841,7 +842,7 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             } while (dividir);
-            
+
             //sumar
             boolean sumar = true;
             do {
@@ -863,7 +864,7 @@ public class Main extends javax.swing.JFrame {
                             lista.delete(i);
                             seguir = true;
                             break;
-                        }else{
+                        } else {
                             seguir = false;
                         }
                     }
@@ -878,12 +879,12 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             } while (sumar);
-            
+
             //restar
             boolean restar = true;
             do {
                 for (int i = 0; i < lista.length; i++) {
-                    if (lista.get(i).equals("-")) { 
+                    if (lista.get(i).equals("-")) {
                         double num = Double.parseDouble(lista.get(i - 1) + "") - Double.parseDouble(lista.get(i + 1) + "");
                         lista.set(i - 1, num + "");
                         lista.set(i, "");
@@ -900,7 +901,7 @@ public class Main extends javax.swing.JFrame {
                             lista.delete(i);
                             seguir = true;
                             break;
-                        }else{
+                        } else {
                             seguir = false;
                         }
                     }
@@ -915,7 +916,7 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             } while (restar);
-            calcu_text.append(" = "+lista.get(0));
+            calcu_text.append(" = " + lista.get(0));
             //lista.print();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Syntax Error");
@@ -925,7 +926,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         File fichero = null;
-        
+        text_huffman.setText("");
         Scanner sc = null;
         try {
             JFileChooser jfc = new JFileChooser();
@@ -940,9 +941,9 @@ public class Main extends javax.swing.JFrame {
             sc.close();
         } catch (Exception e) {
         }
-        
+
         text_huffman.append(texto);
-        
+
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
@@ -952,31 +953,91 @@ public class Main extends javax.swing.JFrame {
             for (int i = 0; i < texto.length(); i++) {
                 l.add(texto.charAt(i));
             }
-            
+
             for (int i = 0; i < l.size(); i++) {
                 int cont = 1;
-                for (int j = i+1; j < l.size(); j++) {
-                    if (((char)l.get(i)) == ((char)l.get(j)) && ((char)l.get(i)) != '♀') {
+                for (int j = i + 1; j < l.size(); j++) {
+                    if (((char) l.get(i)) == ((char) l.get(j)) && ((char) l.get(i)) != '♀') {
                         cont++;
                     }
-                    
+
                 }
-                char letra = ((char)l.get(i));  
-                if (((char)l.get(i)) != '♀') {
-                    lista.insert(new Caracter((char)l.get(i),cont));
+                char letra = ((char) l.get(i));
+                if (((char) l.get(i)) != '♀') {
+                    lista.insert(new Caracter((char) l.get(i), cont));
                 }
                 for (int j = 0; j < l.size(); j++) {
-                    if(((char)l.get(j)) == letra){
+                    if (((char) l.get(j)) == letra) {
                         l.set(j, '♀');
                     }
                 }
-            }  
+            }
+            List arboles = new List(200);
             for (int i = 0; i < lista.length; i++) {
+                Nodo root = new Nodo(((Caracter) lista.get(i)));
+                Arbol arbol = new Arbol(root);
+                arboles.insert(arbol);
+            }
+
+            boolean salir = true;
+            do {
+                for (int i = 0; i < arboles.length; i++) {
+                    Arbol arb1 = ((Arbol) arboles.get(i));
+                    Nodo nodo1 = (arb1.getRaiz());
+                    Caracter c1 = (nodo1.getData());
+                    int valor1 = c1.getNumero();
+                    for (int j = i + 1; j < arboles.length; j++) {
+                        Arbol arb2 = ((Arbol) arboles.get(j));
+                        Nodo nodo2 = arb2.getRaiz();
+                        Caracter c2 = (nodo2.getData());
+                        int valor2 = c2.getNumero();
+                        if (valor2 < valor1) {
+                            Arbol aux = ((Arbol) arboles.get(i));
+                            arboles.set(i, ((Arbol) arboles.get(j)));
+                            arboles.set(j, aux);
+                        }
+                    }
+                }
+
+                if (arboles.length == 1) {
+                    salir = false;
+                } else {
+                    Arbol arbol1 = ((Arbol) arboles.get(0));
+                    Arbol arbol2 = ((Arbol) arboles.get(1));
+                    Nodo nodo1 = (arbol1.getRaiz());
+                    Caracter c1 = (nodo1.getData());
+                    Nodo nodo2 = (arbol2.getRaiz());
+                    Caracter c2 = (nodo2.getData());
+                    int suma = c1.getNumero() + c2.getNumero();
+                    Caracter caracter = new Caracter('▼', suma);
+                    Nodo raiz = new Nodo(caracter);
+                    Arbol nuevo = new Arbol(raiz);
+                    nuevo.getRaiz().setHojaI(nodo1);
+                    nuevo.getRaiz().setHolaD(nodo2);
+                    arboles.delete(0);
+                    arboles.delete(0);
+                    arboles.insert(nuevo);
+                }
+            } while (salir);
+
+            Arbol huffman = ((Arbol) arboles.get(0));
+            huff(huffman.getRaiz());
+
+            /*for (int i = 0; i < arboles.length; i++) {
+                Arbol arb2 = ((Arbol) arboles.get(i));
+                Nodo nodo2 = arb2.getRaiz();
+                Caracter c2 = (nodo2.getData());
+                System.out.print(c2.getCaracter());
+                System.out.print(" "+c2.getNumero());
+                System.out.println();
+            }*/
+
+ /*for (int i = 0; i < lista.length; i++) {
                 System.out.print(((Caracter)lista.get(i)).getCaracter());
                 System.out.print(" "+((Caracter)lista.get(i)).getNumero());
                 System.out.println("");
                 
-            }
+            }*/
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1058,5 +1119,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextArea text_huffman;
     // End of variables declaration//GEN-END:variables
 int[][] matriz;
-String texto = "";
+    String texto = "";
+
+    public static void huff(Nodo root) {
+        if (root != null) {
+            Caracter c = root.getData();
+            if (c.getCaracter() != '▼') {
+                System.out.print(c.getCaracter());
+                System.out.print(" " + c.getNumero());
+                System.out.println("");
+            }
+            huff(root.getHojaI());
+            huff(root.getHolaD());
+        }
+    }
 }
