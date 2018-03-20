@@ -940,6 +940,7 @@ public class Main extends javax.swing.JFrame {
             }
             sc.close();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
 
         text_huffman.append(texto);
@@ -948,8 +949,12 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         try {
+            //text_huffman.setText("");
             List lista = new List(200);
             ArrayList l = new ArrayList();
+            if (!codes.isEmpty()) {
+                codes.clear();
+            }
             for (int i = 0; i < texto.length(); i++) {
                 l.add(texto.charAt(i));
             }
@@ -972,6 +977,7 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             }
+            
             List arboles = new List(200);
             for (int i = 0; i < lista.length; i++) {
                 Nodo root = new Nodo(((Caracter) lista.get(i)));
@@ -1024,13 +1030,13 @@ public class Main extends javax.swing.JFrame {
             
             huffman.getRaiz().getData().setCaracter('•');
             huff(huffman.getRaiz(),"2");
-            text_huffman.setText("");
-            for (int i = 0; i < codes.length; i++) {
+            //text_huffman.setText("");
+            /*for (int i = 0; i < codes.length; i++) {
                 String car = ((Caracter)codes.get(i)).getCode();
                 char ce = ((Caracter)codes.get(i)).getCaracter();
                 text_huffman.append(ce+"_"+car+" ");
                 
-            }
+            }*/
 
             /*for (int i = 0; i < arboles.length; i++) {
                 Arbol arb2 = ((Arbol) arboles.get(i));
@@ -1041,15 +1047,58 @@ public class Main extends javax.swing.JFrame {
                 System.out.println();
             }*/
 
- /*for (int i = 0; i < lista.length; i++) {
+            /*for (int i = 0; i < lista.length; i++) {
                 System.out.print(((Caracter)lista.get(i)).getCaracter());
                 System.out.print(" "+((Caracter)lista.get(i)).getNumero());
                 System.out.println("");
                 
             }*/
+            String tempo = ((Caracter)codes.get(codes.length-1)).getCode();
+            
+            tempo += "1";
+            
+            ((Caracter)codes.get(codes.length-1)).setCode(tempo);
+            String acumulador = "";
+            for (int i = 0; i < texto.length(); i++) {
+                for (int j = 0; j < codes.length; j++) {
+                    if (texto.charAt(i) == ((Caracter)codes.get(j)).getCaracter()) {
+                        acumulador += ((Caracter)codes.get(j)).getCode();
+                    }
+                }
+            }
+            int cont = 0;
+            String comprimido = "", acum2 = ""; 
+            for (int i = 0; i < acumulador.length(); i++) {
+                if (cont == 8) {
+                    int exp = 7;
+                    int numero = 0;
+                    for (int j = 0; j < acum2.length(); j++) {
+                        if(acum2.charAt(j) == '1'){
+                            numero += Math.pow(2,exp);
+                        }
+                        exp--;
+                    }
+                     
+                     char letra = (char)(numero);
+                     comprimido += letra;
+                     cont = 0;
+                     acum2 = "";
+                }else{
+                    acum2 += acumulador.charAt(i);
+                    cont++;
+                }
+                if (i == acumulador.length()-1 && !"".equals(acum2)) {
+                    comprimido += acum2;
+                }
+            }
+            
+            text_huffman.append("\n" +"Texto comprimido: " +comprimido);
+            
         } catch (Exception e) {
-            e.printStackTrace();
+           JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
+        
+        
     }//GEN-LAST:event_jButton21ActionPerformed
 
     /**
