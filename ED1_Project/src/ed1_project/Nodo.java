@@ -6,9 +6,19 @@ public class Nodo {
     private Nodo padre;
     private Nodo hojaI;
     private Nodo holaD;
+    private boolean visited;
 
     public Nodo(Caracter data) {
         this.data = data;
+        visited = false;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
     }
 
     public Caracter getData() {

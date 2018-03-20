@@ -1021,7 +1021,16 @@ public class Main extends javax.swing.JFrame {
             } while (salir);
 
             Arbol huffman = ((Arbol) arboles.get(0));
-            huff(huffman.getRaiz());
+            
+            huffman.getRaiz().getData().setCaracter('•');
+            huff(huffman.getRaiz(),"2");
+            text_huffman.setText("");
+            for (int i = 0; i < codes.length; i++) {
+                String car = ((Caracter)codes.get(i)).getCode();
+                char ce = ((Caracter)codes.get(i)).getCaracter();
+                text_huffman.append(ce+"_"+car+" ");
+                
+            }
 
             /*for (int i = 0; i < arboles.length; i++) {
                 Arbol arb2 = ((Arbol) arboles.get(i));
@@ -1118,19 +1127,40 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextArea text_area1;
     private javax.swing.JTextArea text_huffman;
     // End of variables declaration//GEN-END:variables
-int[][] matriz;
+    int[][] matriz;
     String texto = "";
-
-    public static void huff(Nodo root) {
+    static String Hacum = "";
+    static List codes = new List(100);
+    
+    
+    public static void huff(Nodo root, String codigo) {
         if (root != null) {
             Caracter c = root.getData();
-            if (c.getCaracter() != '▼') {
+            //root.setVisited(true);
+            /*if (c.getCaracter() != '▼') {
                 System.out.print(c.getCaracter());
                 System.out.print(" " + c.getNumero());
                 System.out.println("");
+            }*/
+            if (!"2".equals(codigo)) {
+                Hacum += codigo;
             }
-            huff(root.getHojaI());
-            huff(root.getHolaD());
+            if (root.getHojaI() == null || root.getHolaD() == null) {
+                codes.insert(new Caracter(c.getCaracter(),Hacum));
+                String temp = Hacum.substring(0, Hacum.length()-1);
+                Hacum = temp;
+            }
+            
+            huff(root.getHojaI(),"0");
+            if(c.getCaracter() == '•'){
+                Hacum = "";
+            }
+            huff(root.getHolaD(),"1");
+            
+            if(Hacum.length() > 1){
+                String temp = Hacum.substring(0, Hacum.length()-1);
+                Hacum = temp;
+            }
         }
     }
 }
