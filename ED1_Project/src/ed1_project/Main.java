@@ -1131,7 +1131,7 @@ public class Main extends javax.swing.JFrame {
                 boolean seguir = true;
                 int cont = 0;
                 do {
-                    
+
                     boolean isIn = false;
                     int conectado = Integer.parseInt(JOptionPane.showInputDialog(this, "A que nodo esta conectado el nodo: " + i));
                     for (int j = 0; j < ((NodoBi) nodos.get(i - 1)).getAristas().length; j++) {
@@ -1170,11 +1170,69 @@ public class Main extends javax.swing.JFrame {
             }
             Grafo graph = new Grafo(nodos);
 
+            int matrix[][] = new int[cantidadNodos][cantidadNodos];
+            for (int i = 0; i < cantidadNodos; i++) {
+                for (int j = 0; j < cantidadNodos; j++) {
+                    matrix[i][j] = 0;
+                }
+            }
+            for (int i = 0; i < cantidadNodos; i++) {
+                List temporal = ((NodoBi) nodos.get(i)).getAristas();
+                for (int j = 0; j < temporal.length; j++) {
+                    int num = ((int) temporal.get(j));
+                    matrix[i][num - 1] = 1;
+                    matrix[num - 1][i] = 1;
+                }
+            }
+            /*for (int i = 0; i < cantidadNodos; i++) {
+              List v =  ((NodoBi) nodos.get(i)).getAristas();
+                System.out.print((i+1)+" ");
+                for (int j = 0; j < v.length; j++) {
+                    System.out.print(v.get(j)+",");
+                }
+                System.out.println("");
+            }*/
+
+            for (int i = 0; i < cantidadNodos; i++) {
+                boolean is = false;
+                for (int j = 0; j < cantidadNodos; j++) {
+                    is = false;
+                    if(matrix[i][j] == 1){
+                        for (int k = 0; k <((NodoBi) nodos.get(j)).getAristas().length; k++) {
+                            int numero = ((int) ((NodoBi) nodos.get(j)).getAristas().get(k));
+                            if(numero==i+1){
+                                is = true;
+                            }
+                        }
+                        if(!is){
+                            ((NodoBi) nodos.get(j)).getAristas().insert(i+1);
+                        }
+                    }
+                }
+            }
+   
+           /* System.out.println("\n\n\nesta es la otra\n");
+            for (int i = 0; i < cantidadNodos; i++) {
+              List v =  ((NodoBi) nodos.get(i)).getAristas();
+                System.out.print((i+1)+" ");
+                for (int j = 0; j < v.length; j++) {
+                    System.out.print(v.get(j)+",");
+                }
+                System.out.println("");
+            }*/
+            
+
             /*for (int i = 0; i < graph.getNodos().length; i++) {
                 System.out.println("ji");
                 NodoBi n = ((NodoBi) graph.getNodos().get(i));
                 System.out.println(n.getNombre());
             }*/
+            StackNodos estack = new StackNodos(200);
+            estack.push((NodoBi) nodos.get(0));
+            ((NodoBi) nodos.get(0)).setVisitado(true);
+            while (!estack.isEmpty()) {
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1291,6 +1349,23 @@ public class Main extends javax.swing.JFrame {
                 String temp = Hacum.substring(0, Hacum.length() - 1);
                 Hacum = temp;
             }
+        }
+    }
+
+    public static void recorridoGrafo(int i, int j, int[][] matrix) {
+        if (i != matrix.length - 1 && j != matrix.length - 1) {
+            if (matrix[i][j] == 0) {
+                if (j != matrix.length) {
+                    j++;
+                } else {
+                    j = 0;
+                    i++;
+                }
+            } else {
+
+            }
+        } else {
+
         }
     }
 }
