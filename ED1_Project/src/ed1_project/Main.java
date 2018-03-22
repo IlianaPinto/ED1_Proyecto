@@ -65,6 +65,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         text_huffman = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
+        jButton22 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -444,18 +445,31 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Compresion de Archivos", jPanel4);
 
+        jButton22.setText("Crear Grafo");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 628, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(jButton22)
+                .addContainerGap(467, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(369, Short.MAX_VALUE)
+                .addComponent(jButton22)
+                .addGap(56, 56, 56))
         );
 
-        jTabbedPane1.addTab("tab4", jPanel5);
+        jTabbedPane1.addTab("Grafo Bicoloreable", jPanel5);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -978,7 +992,7 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             }
-            
+
             List arboles = new List(200);
             for (int i = 0; i < lista.length; i++) {
                 Nodo root = new Nodo(((Caracter) lista.get(i)));
@@ -1028,9 +1042,9 @@ public class Main extends javax.swing.JFrame {
             } while (salir);
 
             Arbol huffman = ((Arbol) arboles.get(0));
-            
+
             huffman.getRaiz().getData().setCaracter('•');
-            huff(huffman.getRaiz(),"2");
+            huff(huffman.getRaiz(), "2");
             //text_huffman.setText("");
             /*for (int i = 0; i < codes.length; i++) {
                 String car = ((Caracter)codes.get(i)).getCode();
@@ -1039,7 +1053,7 @@ public class Main extends javax.swing.JFrame {
                 
             }*/
 
-            /*for (int i = 0; i < arboles.length; i++) {
+ /*for (int i = 0; i < arboles.length; i++) {
                 Arbol arb2 = ((Arbol) arboles.get(i));
                 Nodo nodo2 = arb2.getRaiz();
                 Caracter c2 = (nodo2.getData());
@@ -1048,59 +1062,125 @@ public class Main extends javax.swing.JFrame {
                 System.out.println();
             }*/
 
-            /*for (int i = 0; i < lista.length; i++) {
+ /*for (int i = 0; i < lista.length; i++) {
                 System.out.print(((Caracter)lista.get(i)).getCaracter());
                 System.out.print(" "+((Caracter)lista.get(i)).getNumero());
                 System.out.println("");
                 
             }*/
-            String tempo = ((Caracter)codes.get(codes.length-1)).getCode();
-            
+            String tempo = ((Caracter) codes.get(codes.length - 1)).getCode();
+
             tempo += "1";
-            
-            ((Caracter)codes.get(codes.length-1)).setCode(tempo);
+
+            ((Caracter) codes.get(codes.length - 1)).setCode(tempo);
             String acumulador = "";
             for (int i = 0; i < texto.length(); i++) {
                 for (int j = 0; j < codes.length; j++) {
-                    if (texto.charAt(i) == ((Caracter)codes.get(j)).getCaracter()) {
-                        acumulador += ((Caracter)codes.get(j)).getCode();
+                    if (texto.charAt(i) == ((Caracter) codes.get(j)).getCaracter()) {
+                        acumulador += ((Caracter) codes.get(j)).getCode();
                     }
                 }
             }
             int cont = 0;
-            String comprimido = "", acum2 = ""; 
+            String comprimido = "", acum2 = "";
             for (int i = 0; i < acumulador.length(); i++) {
                 if (cont == 8) {
                     int exp = 7;
                     int numero = 0;
                     for (int j = 0; j < acum2.length(); j++) {
-                        if(acum2.charAt(j) == '1'){
-                            numero += Math.pow(2,exp);
+                        if (acum2.charAt(j) == '1') {
+                            numero += Math.pow(2, exp);
                         }
                         exp--;
                     }
-                     
-                     char letra = (char)(numero);
-                     comprimido += letra;
-                     cont = 0;
-                     acum2 = "";
-                }else{
+
+                    char letra = (char) (numero);
+                    comprimido += letra;
+                    cont = 0;
+                    acum2 = "";
+                } else {
                     acum2 += acumulador.charAt(i);
                     cont++;
                 }
-                if (i == acumulador.length()-1 && !"".equals(acum2)) {
+                if (i == acumulador.length() - 1 && !"".equals(acum2)) {
                     comprimido += acum2;
                 }
             }
-            
-            text_huffman.append("\n" +"Texto comprimido: " +comprimido);
-            
+
+            text_huffman.append("\n" + "Texto comprimido: " + comprimido);
+
         } catch (Exception e) {
-           JOptionPane.showMessageDialog(this, "Ocurrio un error");
+            JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
-        
-        
+
+
     }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        try {
+            int cantidadNodos = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
+            while (cantidadNodos <= 0) {
+                cantidadNodos = Integer.parseInt(JOptionPane.showInputDialog(this, "Numero ingresado incorrecto, ingrese nuevamente"));
+            }
+            List nodos = new List(200);
+            for (int i = 0; i < cantidadNodos; i++) {
+                nodos.insert(new NodoBi(i + 1));
+            }
+
+            for (int i = 1; i <= cantidadNodos; i++) {
+                boolean seguir = true;
+                int cont = 0;
+                do {
+                    
+                    boolean isIn = false;
+                    int conectado = Integer.parseInt(JOptionPane.showInputDialog(this, "A que nodo esta conectado el nodo: " + i));
+                    for (int j = 0; j < ((NodoBi) nodos.get(i - 1)).getAristas().length; j++) {
+                        List a = ((NodoBi) nodos.get(i - 1)).getAristas();
+
+                        if (conectado == ((int) a.get(j))) {
+                            isIn = true;
+                        }
+                    }
+                    while (conectado == i || conectado <= 0 || conectado > cantidadNodos || isIn) {
+                        conectado = Integer.parseInt(JOptionPane.showInputDialog(this, "Numero incorrecto, ingrese nuevamente"));
+                        isIn = false;
+                        for (int j = 0; j < ((NodoBi) nodos.get(i - 1)).getAristas().length; j++) {
+                            List a = ((NodoBi) nodos.get(i - 1)).getAristas();
+
+                            if (conectado == ((int) a.get(j))) {
+                                isIn = true;
+                            }
+                        }
+                    }
+                    ((NodoBi) nodos.get(i - 1)).getAristas().insert(conectado);
+                    cont++;
+                    String opcion = "s";
+                    if (cont != cantidadNodos - 1) {
+                        opcion = JOptionPane.showInputDialog(this, "Desea agregar mas aristas? [s/n]");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "El nodo no se puede conectar a mas nodos");
+                        cont = 0;
+                        seguir = false;
+                    }
+                    if ("n".equals(opcion)) {
+                        seguir = false;
+                    }
+                } while (seguir);
+
+            }
+            Grafo graph = new Grafo(nodos);
+
+            /*for (int i = 0; i < graph.getNodos().length; i++) {
+                System.out.println("ji");
+                NodoBi n = ((NodoBi) graph.getNodos().get(i));
+                System.out.println(n.getNombre());
+            }*/
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }//GEN-LAST:event_jButton22ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1153,6 +1233,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1181,8 +1262,7 @@ public class Main extends javax.swing.JFrame {
     String texto = "";
     static String Hacum = "";
     static List codes = new List(100);
-    
-    
+
     public static void huff(Nodo root, String codigo) {
         if (root != null) {
             Caracter c = root.getData();
@@ -1196,19 +1276,19 @@ public class Main extends javax.swing.JFrame {
                 Hacum += codigo;
             }
             if (root.getHojaI() == null || root.getHolaD() == null) {
-                codes.insert(new Caracter(c.getCaracter(),Hacum));
-                String temp = Hacum.substring(0, Hacum.length()-1);
+                codes.insert(new Caracter(c.getCaracter(), Hacum));
+                String temp = Hacum.substring(0, Hacum.length() - 1);
                 Hacum = temp;
             }
-            
-            huff(root.getHojaI(),"0");
-            if(c.getCaracter() == '•'){
+
+            huff(root.getHojaI(), "0");
+            if (c.getCaracter() == '•') {
                 Hacum = "";
             }
-            huff(root.getHolaD(),"1");
-            
-            if(Hacum.length() > 1){
-                String temp = Hacum.substring(0, Hacum.length()-1);
+            huff(root.getHolaD(), "1");
+
+            if (Hacum.length() > 1) {
+                String temp = Hacum.substring(0, Hacum.length() - 1);
                 Hacum = temp;
             }
         }
