@@ -48,6 +48,11 @@ public class NodoBi {
     public void setNombre(int nombre) {
         this.nombre = nombre;
     }
+
+    @Override
+    public String toString() {
+        return aristas +"";
+    }
     
     
 }

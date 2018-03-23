@@ -9,9 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 public class Main extends javax.swing.JFrame {
 
@@ -31,6 +33,14 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BiGrafo = new javax.swing.JDialog();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        combo2 = new javax.swing.JComboBox<>();
+        combo = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jButton23 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -70,6 +80,100 @@ public class Main extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
+
+        jPanel11.setBackground(new java.awt.Color(0, 102, 102));
+
+        jLabel1.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel1.setFont(new java.awt.Font("Khmer UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Seleccione los nodos que desea conectar");
+
+        combo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboItemStateChanged(evt);
+            }
+        });
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nodo", "Conexiones"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tabla);
+
+        jButton23.setText("Conectar");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(78, 78, 78)))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton23))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout BiGrafoLayout = new javax.swing.GroupLayout(BiGrafo.getContentPane());
+        BiGrafo.getContentPane().setLayout(BiGrafoLayout);
+        BiGrafoLayout.setHorizontalGroup(
+            BiGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        BiGrafoLayout.setVerticalGroup(
+            BiGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1117,9 +1221,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-   
+
         try {
-            int cantidadNodos = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
+            /*int cantidadNodos = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
             while (cantidadNodos <= 0) {
                 cantidadNodos = Integer.parseInt(JOptionPane.showInputDialog(this, "Numero ingresado incorrecto, ingrese nuevamente"));
             }
@@ -1185,14 +1289,6 @@ public class Main extends javax.swing.JFrame {
                     matrix[num - 1][i] = 1;
                 }
             }
-            /*for (int i = 0; i < cantidadNodos; i++) {
-              List v =  ((NodoBi) nodos.get(i)).getAristas();
-                System.out.print((i+1)+" ");
-                for (int j = 0; j < v.length; j++) {
-                    System.out.print(v.get(j)+",");
-                }
-                System.out.println("");
-            }*/
             
             for (int i = 0; i < cantidadNodos; i++) {
                 boolean is = false;
@@ -1211,35 +1307,87 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             }
-   
-           /* System.out.println("\n\n\nesta es la otra\n");
-            for (int i = 0; i < cantidadNodos; i++) {
-              List v =  ((NodoBi) nodos.get(i)).getAristas();
-                System.out.print((i+1)+" ");
-                for (int j = 0; j < v.length; j++) {
-                    System.out.print(v.get(j)+",");
-                }
-                System.out.println("");
-            }*/
-            
-
-            /*for (int i = 0; i < graph.getNodos().length; i++) {
-                System.out.println("ji");
-                NodoBi n = ((NodoBi) graph.getNodos().get(i));
-                System.out.println(n.getNombre());
-            }*/
             StackNodos estack = new StackNodos(200);
             estack.push((NodoBi) nodos.get(0));
             ((NodoBi) nodos.get(0)).setVisitado(true);
             while (!estack.isEmpty()) {
 
-            }
+            }*/
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        try {
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) combo.getModel();
+            modelo.removeAllElements();
+            int cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
+            for (int i = 1; i <= cantidad; i++) {
+                GrafoNodos.insert(new NodoBi(i));
+                modelo.addElement(i);
+            }
+            while (cantidad <= 0) {
+                cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
+            }
+
+            BiGrafo.pack();
+            BiGrafo.setModal(true);
+            BiGrafo.setVisible(true);
+            BiGrafo.setLocationRelativeTo(this);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error");
+        }
+
 
     }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboItemStateChanged
+
+        try {
+            int pos = Integer.parseInt(combo.getSelectedItem() + "");
+            boolean verificar = true;
+            modelo2 = (DefaultComboBoxModel) combo2.getModel();
+            modelo2.removeAllElements();
+            for (int i = 0; i < GrafoNodos.length; i++) {
+                verificar = true;
+                for (int j = 0; j < ((NodoBi) GrafoNodos.get(i)).getAristas().length; j++) {
+                    int num = Integer.parseInt(((NodoBi) GrafoNodos.get(i)).getAristas().get(j) + "");
+                    if (num == pos) {
+                        verificar = false;
+                    }
+                }
+                if (verificar && pos != i + 1) {
+                    modelo2.addElement(i + 1);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error");
+        }
+        
+    }//GEN-LAST:event_comboItemStateChanged
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        try {
+            int pos = Integer.parseInt(combo.getSelectedItem() + "");
+            int pos2 = Integer.parseInt(combo2.getSelectedItem() + "");
+            DefaultTableModel m = (DefaultTableModel) tabla.getModel();
+            m.setRowCount(0);
+            for (int i = 0; i < GrafoNodos.length; i++) {
+                if (((NodoBi) GrafoNodos.get(i)).getNombre() == pos) {
+                    ((NodoBi) GrafoNodos.get(i)).getAristas().insert(pos2);
+                }
+                if (((NodoBi) GrafoNodos.get(i)).getNombre() == pos2) {
+                    ((NodoBi) GrafoNodos.get(i)).getAristas().insert(pos);
+                }
+            }
+            for (int i = 0; i < GrafoNodos.length; i++) {
+                Object row[] = {((NodoBi) GrafoNodos.get(i)).getNombre(), ((NodoBi) GrafoNodos.get(i)).getAristas()};
+                m.addRow(row);
+            }
+            modelo2.removeAllElements();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error");
+        }
+    }//GEN-LAST:event_jButton23ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1277,7 +1425,10 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog BiGrafo;
     private javax.swing.JTextArea calcu_text;
+    private javax.swing.JComboBox<String> combo;
+    private javax.swing.JComboBox<String> combo2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1293,6 +1444,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1300,8 +1452,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1313,7 +1467,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable tabla;
     private javax.swing.JTextArea text_area1;
     private javax.swing.JTextArea text_huffman;
     // End of variables declaration//GEN-END:variables
@@ -1321,6 +1477,8 @@ public class Main extends javax.swing.JFrame {
     String texto = "";
     static String Hacum = "";
     static List codes = new List(100);
+    List GrafoNodos = new List(200);
+    DefaultComboBoxModel modelo2;
 
     public static void huff(Nodo root, String codigo) {
         if (root != null) {
