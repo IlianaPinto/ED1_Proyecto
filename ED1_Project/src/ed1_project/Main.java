@@ -1117,6 +1117,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+   
         try {
             int cantidadNodos = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
             while (cantidadNodos <= 0) {
@@ -1192,7 +1193,7 @@ public class Main extends javax.swing.JFrame {
                 }
                 System.out.println("");
             }*/
-
+            
             for (int i = 0; i < cantidadNodos; i++) {
                 boolean is = false;
                 for (int j = 0; j < cantidadNodos; j++) {
