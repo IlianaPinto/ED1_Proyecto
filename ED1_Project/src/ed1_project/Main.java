@@ -1318,22 +1318,31 @@ public class Main extends javax.swing.JFrame {
         }
 
         try {
-            DefaultComboBoxModel modelo = (DefaultComboBoxModel) combo.getModel();
+            if (!GrafoNodos.isEmpty()) {
+                GrafoNodos.clear();
+            }
+            modelo = (DefaultComboBoxModel) combo.getModel();
             modelo.removeAllElements();
             int cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
+            while (cantidad <= 0) {
+                cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
+            }
             for (int i = 1; i <= cantidad; i++) {
                 GrafoNodos.insert(new NodoBi(i));
                 modelo.addElement(i);
             }
-            while (cantidad <= 0) {
-                cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
-            }
-
+            mode = (DefaultTableModel) tabla.getModel();
+            
+            
+            mode.setRowCount(0);
+            modelo2 = (DefaultComboBoxModel) combo2.getModel();
+            modelo2.removeAllElements();
             BiGrafo.pack();
             BiGrafo.setModal(true);
             BiGrafo.setVisible(true);
             BiGrafo.setLocationRelativeTo(this);
         } catch (Exception e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
 
@@ -1345,7 +1354,7 @@ public class Main extends javax.swing.JFrame {
         try {
             int pos = Integer.parseInt(combo.getSelectedItem() + "");
             boolean verificar = true;
-            modelo2 = (DefaultComboBoxModel) combo2.getModel();
+            //modelo2 = (DefaultComboBoxModel) combo2.getModel();
             modelo2.removeAllElements();
             for (int i = 0; i < GrafoNodos.length; i++) {
                 verificar = true;
@@ -1360,7 +1369,8 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un error");
+            /*e.printStackTrace();
+            JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");*/
         }
         
     }//GEN-LAST:event_comboItemStateChanged
@@ -1369,8 +1379,8 @@ public class Main extends javax.swing.JFrame {
         try {
             int pos = Integer.parseInt(combo.getSelectedItem() + "");
             int pos2 = Integer.parseInt(combo2.getSelectedItem() + "");
-            DefaultTableModel m = (DefaultTableModel) tabla.getModel();
-            m.setRowCount(0);
+           
+            mode.setRowCount(0);
             for (int i = 0; i < GrafoNodos.length; i++) {
                 if (((NodoBi) GrafoNodos.get(i)).getNombre() == pos) {
                     ((NodoBi) GrafoNodos.get(i)).getAristas().insert(pos2);
@@ -1381,11 +1391,12 @@ public class Main extends javax.swing.JFrame {
             }
             for (int i = 0; i < GrafoNodos.length; i++) {
                 Object row[] = {((NodoBi) GrafoNodos.get(i)).getNombre(), ((NodoBi) GrafoNodos.get(i)).getAristas()};
-                m.addRow(row);
+                mode.addRow(row);
             }
             modelo2.removeAllElements();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un error");
+            //e.printStackTrace();
+            JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");
         }
     }//GEN-LAST:event_jButton23ActionPerformed
 
@@ -1479,6 +1490,8 @@ public class Main extends javax.swing.JFrame {
     static List codes = new List(100);
     List GrafoNodos = new List(200);
     DefaultComboBoxModel modelo2;
+    DefaultComboBoxModel modelo;
+    DefaultTableModel mode;
 
     public static void huff(Nodo root, String codigo) {
         if (root != null) {
