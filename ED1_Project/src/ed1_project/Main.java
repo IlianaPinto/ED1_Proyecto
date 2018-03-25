@@ -74,12 +74,13 @@ public class Main extends javax.swing.JFrame {
         jButton21 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         text_huffman = new javax.swing.JTextArea();
-        jPanel5 = new javax.swing.JPanel();
-        jButton22 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jButton22 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
 
         jPanel11.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -549,32 +550,6 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Compresion de Archivos", jPanel4);
 
-        jButton22.setText("Crear Grafo");
-        jButton22.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jButton22)
-                .addContainerGap(467, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(369, Short.MAX_VALUE)
-                .addComponent(jButton22)
-                .addGap(56, 56, 56))
-        );
-
-        jTabbedPane1.addTab("Grafo Bicoloreable", jPanel5);
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -626,6 +601,43 @@ public class Main extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("tab8", jPanel9);
+
+        jButton22.setText("Crear Grafo");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
+
+        jButton24.setText("Verificar");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(467, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(340, Short.MAX_VALUE)
+                .addComponent(jButton24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton22)
+                .addGap(56, 56, 56))
+        );
+
+        jTabbedPane1.addTab("Grafo Bicoloreable", jPanel5);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1331,9 +1343,8 @@ public class Main extends javax.swing.JFrame {
                 GrafoNodos.insert(new NodoBi(i));
                 modelo.addElement(i);
             }
+
             mode = (DefaultTableModel) tabla.getModel();
-            
-            
             mode.setRowCount(0);
             modelo2 = (DefaultComboBoxModel) combo2.getModel();
             modelo2.removeAllElements();
@@ -1342,7 +1353,7 @@ public class Main extends javax.swing.JFrame {
             BiGrafo.setVisible(true);
             BiGrafo.setLocationRelativeTo(this);
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
 
@@ -1372,14 +1383,14 @@ public class Main extends javax.swing.JFrame {
             /*e.printStackTrace();
             JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");*/
         }
-        
+
     }//GEN-LAST:event_comboItemStateChanged
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
         try {
             int pos = Integer.parseInt(combo.getSelectedItem() + "");
             int pos2 = Integer.parseInt(combo2.getSelectedItem() + "");
-           
+
             mode.setRowCount(0);
             for (int i = 0; i < GrafoNodos.length; i++) {
                 if (((NodoBi) GrafoNodos.get(i)).getNombre() == pos) {
@@ -1389,8 +1400,13 @@ public class Main extends javax.swing.JFrame {
                     ((NodoBi) GrafoNodos.get(i)).getAristas().insert(pos);
                 }
             }
+            String palabra = "";
             for (int i = 0; i < GrafoNodos.length; i++) {
-                Object row[] = {((NodoBi) GrafoNodos.get(i)).getNombre(), ((NodoBi) GrafoNodos.get(i)).getAristas()};
+                palabra = "";
+                for (int j = 0; j < ((NodoBi) GrafoNodos.get(i)).getAristas().length; j++) {
+                    palabra += ((NodoBi) GrafoNodos.get(i)).getAristas().get(j) + " ,";
+                }
+                Object row[] = {((NodoBi) GrafoNodos.get(i)).getNombre(), palabra};
                 mode.addRow(row);
             }
             modelo2.removeAllElements();
@@ -1399,6 +1415,48 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");
         }
     }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+
+        try {
+            StackNodos estack = new StackNodos(200);
+            estack.push((NodoBi) GrafoNodos.get(0));
+            ((NodoBi) GrafoNodos.get(0)).setVisitado(true);
+            ((NodoBi) GrafoNodos.get(0)).setColor(Color.blue);
+            boolean bicolor = true;
+            while (!estack.isEmpty() && bicolor) {
+                NodoBi temp = estack.Pop();
+                List h = temp.getAristas();
+                temp.setVisitado(true);
+                for (int i = 0; i < temp.getAristas().length; i++) {
+                    int num = (int) h.get(i);
+                    if (((NodoBi) GrafoNodos.get(num - 1)).isVisitado()) {
+                        if (temp.getColor() == Color.white && ((NodoBi) GrafoNodos.get(num - 1)).getColor() == Color.BLUE) {
+                            temp.setColor(Color.red);
+                        }
+                        if (temp.getColor() == Color.white && ((NodoBi) GrafoNodos.get(num - 1)).getColor() == Color.red) {
+                            temp.setColor(Color.blue);
+                        }
+                        if (temp.getColor() == Color.red && ((NodoBi) GrafoNodos.get(num - 1)).getColor() == Color.red) {
+                            bicolor = false;
+                        }
+                        if (temp.getColor() == Color.blue && ((NodoBi) GrafoNodos.get(num - 1)).getColor() == Color.blue) {
+                            bicolor = false;
+                        }
+
+                    } else {
+                        estack.push((NodoBi) GrafoNodos.get(num - 1));
+                    }
+                }
+            }
+            if (bicolor) {
+                JOptionPane.showMessageDialog(this, "El grafo es bicoloreable");
+            } else {
+                JOptionPane.showMessageDialog(this, "El grafo no es bicoloreable");
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton24ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1456,6 +1514,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
