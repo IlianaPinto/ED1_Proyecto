@@ -41,6 +41,18 @@ public class Main extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jButton23 = new javax.swing.JButton();
+        jSpinner1 = new javax.swing.JSpinner();
+        DiGrafo = new javax.swing.JDialog();
+        jPanel12 = new javax.swing.JPanel();
+        jButton26 = new javax.swing.JButton();
+        origen = new javax.swing.JComboBox<>();
+        destino = new javax.swing.JComboBox<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tabla2 = new javax.swing.JTable();
+        spinner = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -75,6 +87,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         text_huffman = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
+        jButton25 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -174,6 +187,122 @@ public class Main extends javax.swing.JFrame {
         BiGrafoLayout.setVerticalGroup(
             BiGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel12.setBackground(new java.awt.Color(0, 102, 102));
+
+        jButton26.setText("Conectar");
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
+
+        origen.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                origenItemStateChanged(evt);
+            }
+        });
+
+        destino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                destinoActionPerformed(evt);
+            }
+        });
+
+        tabla2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Origen", "Destino", "Peso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tabla2);
+
+        spinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        spinner.setEditor(new javax.swing.JSpinner.NumberEditor(spinner, ""));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Peso");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Origen");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Destino");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(destino, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(origen, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel12Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(origen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(destino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(17, 17, 17)
+                        .addComponent(jButton26))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout DiGrafoLayout = new javax.swing.GroupLayout(DiGrafo.getContentPane());
+        DiGrafo.getContentPane().setLayout(DiGrafoLayout);
+        DiGrafoLayout.setHorizontalGroup(
+            DiGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        DiGrafoLayout.setVerticalGroup(
+            DiGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -550,18 +679,31 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Compresion de Archivos", jPanel4);
 
+        jButton25.setText("Crear");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 628, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jButton25)
+                .addContainerGap(524, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jButton25)
+                .addContainerGap(383, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab5", jPanel6);
+        jTabbedPane1.addTab("Dijkstra", jPanel6);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -729,7 +871,7 @@ public class Main extends javax.swing.JFrame {
                 }
                 text_area1.append("\n");
             }
-
+            
         } catch (HeadlessException | IOException e) {
             e.printStackTrace();
         }
@@ -743,7 +885,7 @@ public class Main extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             boolean salida = true;
-
+            
             ArrayStack laberinto = new ArrayStack(200);
             laberinto.push(new Posicion(0, 0, matriz[0][0] + ""));
             laberinto.push(new Posicion(1, 1, matriz[1][1] + ""));
@@ -761,11 +903,11 @@ public class Main extends javax.swing.JFrame {
                 if (cont == 0) {
                     break;
                 }
-
+                
                 if (matriz[laberinto.Top().getPosicioni()][laberinto.Top().getPosicionj()] != 0) {
                     laberinto.Top().setCaracter("8");
                 }
-
+                
                 if (!"0".equals(laberinto.Top().getCaracter())) {
                     laberinto.Pop();
                 } else if (laberinto.Top().getPosicionj() == matriz.length - 1) {
@@ -774,7 +916,7 @@ public class Main extends javax.swing.JFrame {
                 } else {
                     Posicion temporal = laberinto.Top();
                     matriz[laberinto.Top().getPosicioni()][laberinto.Top().getPosicionj()] = 8;
-
+                    
                     if (temporal.getPosicioni() - 1 >= 0) {
                         laberinto.push(new Posicion(temporal.getPosicioni() - 1, temporal.getPosicionj(), matriz[temporal.getPosicioni() - 1][temporal.getPosicionj()] + ""));
                     }
@@ -794,7 +936,7 @@ public class Main extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Se ha encontrado la ruta de salida ☺");
             }
-
+            
             text_area1.setText("");
             for (int i = 0; i < matriz.length; i++) {
                 for (int j = 0; j < matriz.length; j++) {
@@ -889,7 +1031,7 @@ public class Main extends javax.swing.JFrame {
             String acum = "";
             for (int i = 0; i < cadena.length(); i++) {
                 if (cadena.charAt(i) == '*' || cadena.charAt(i) == '/' || cadena.charAt(i) == '-' || cadena.charAt(i) == '+') {
-
+                    
                 } else {
                     acum += cadena.charAt(i);
                 }
@@ -911,7 +1053,7 @@ public class Main extends javax.swing.JFrame {
                         lista.set(i + 1, "");
                         break;
                     } else {
-
+                        
                     }
                 }
                 boolean seguir = true;
@@ -926,7 +1068,7 @@ public class Main extends javax.swing.JFrame {
                         }
                     }
                 } while (seguir);
-
+                
                 for (int i = 0; i < lista.length; i++) {
                     if (lista.get(i).equals("*")) {
                         multiplicar = true;
@@ -948,7 +1090,7 @@ public class Main extends javax.swing.JFrame {
                         lista.set(i + 1, "");
                         break;
                     } else {
-
+                        
                     }
                 }
                 boolean seguir = true;
@@ -963,7 +1105,7 @@ public class Main extends javax.swing.JFrame {
                         }
                     }
                 } while (seguir);
-
+                
                 for (int i = 0; i < lista.length; i++) {
                     if (lista.get(i).equals("/")) {
                         dividir = true;
@@ -985,7 +1127,7 @@ public class Main extends javax.swing.JFrame {
                         lista.set(i + 1, "");
                         break;
                     } else {
-
+                        
                     }
                 }
                 boolean seguir = true;
@@ -1000,7 +1142,7 @@ public class Main extends javax.swing.JFrame {
                         }
                     }
                 } while (seguir);
-
+                
                 for (int i = 0; i < lista.length; i++) {
                     if (lista.get(i).equals("+")) {
                         sumar = true;
@@ -1022,7 +1164,7 @@ public class Main extends javax.swing.JFrame {
                         lista.set(i + 1, "");
                         break;
                     } else {
-
+                        
                     }
                 }
                 boolean seguir = true;
@@ -1037,7 +1179,7 @@ public class Main extends javax.swing.JFrame {
                         }
                     }
                 } while (seguir);
-
+                
                 for (int i = 0; i < lista.length; i++) {
                     if (lista.get(i).equals("*")) {
                         restar = true;
@@ -1073,7 +1215,7 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
-
+        
         text_huffman.append(texto);
 
     }//GEN-LAST:event_jButton20ActionPerformed
@@ -1089,14 +1231,14 @@ public class Main extends javax.swing.JFrame {
             for (int i = 0; i < texto.length(); i++) {
                 l.add(texto.charAt(i));
             }
-
+            
             for (int i = 0; i < l.size(); i++) {
                 int cont = 1;
                 for (int j = i + 1; j < l.size(); j++) {
                     if (((char) l.get(i)) == ((char) l.get(j)) && ((char) l.get(i)) != '♀') {
                         cont++;
                     }
-
+                    
                 }
                 char letra = ((char) l.get(i));
                 if (((char) l.get(i)) != '♀') {
@@ -1108,14 +1250,14 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             }
-
+            
             List arboles = new List(200);
             for (int i = 0; i < lista.length; i++) {
                 Nodo root = new Nodo(((Caracter) lista.get(i)));
                 Arbol arbol = new Arbol(root);
                 arboles.insert(arbol);
             }
-
+            
             boolean salir = true;
             do {
                 for (int i = 0; i < arboles.length; i++) {
@@ -1135,7 +1277,7 @@ public class Main extends javax.swing.JFrame {
                         }
                     }
                 }
-
+                
                 if (arboles.length == 1) {
                     salir = false;
                 } else {
@@ -1156,9 +1298,9 @@ public class Main extends javax.swing.JFrame {
                     arboles.insert(nuevo);
                 }
             } while (salir);
-
+            
             Arbol huffman = ((Arbol) arboles.get(0));
-
+            
             huffman.getRaiz().getData().setCaracter('•');
             huff(huffman.getRaiz(), "2");
             //text_huffman.setText("");
@@ -1185,9 +1327,9 @@ public class Main extends javax.swing.JFrame {
                 
             }*/
             String tempo = ((Caracter) codes.get(codes.length - 1)).getCode();
-
+            
             tempo += "1";
-
+            
             ((Caracter) codes.get(codes.length - 1)).setCode(tempo);
             String acumulador = "";
             for (int i = 0; i < texto.length(); i++) {
@@ -1209,7 +1351,7 @@ public class Main extends javax.swing.JFrame {
                         }
                         exp--;
                     }
-
+                    
                     char letra = (char) (numero);
                     comprimido += letra;
                     cont = 0;
@@ -1222,18 +1364,18 @@ public class Main extends javax.swing.JFrame {
                     comprimido += acum2;
                 }
             }
-
+            
             text_huffman.append("\n" + "Texto comprimido: " + comprimido);
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
-
+        
 
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-
+        
         try {
             /*int cantidadNodos = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
             while (cantidadNodos <= 0) {
@@ -1328,7 +1470,7 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
         try {
             if (!GrafoNodos.isEmpty()) {
                 GrafoNodos.clear();
@@ -1343,11 +1485,12 @@ public class Main extends javax.swing.JFrame {
                 GrafoNodos.insert(new NodoBi(i));
                 modelo.addElement(i);
             }
-
+            
             mode = (DefaultTableModel) tabla.getModel();
             mode.setRowCount(0);
             modelo2 = (DefaultComboBoxModel) combo2.getModel();
             modelo2.removeAllElements();
+            
             BiGrafo.pack();
             BiGrafo.setModal(true);
             BiGrafo.setVisible(true);
@@ -1356,12 +1499,12 @@ public class Main extends javax.swing.JFrame {
             //e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
-
+        
 
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboItemStateChanged
-
+        
         try {
             int pos = Integer.parseInt(combo.getSelectedItem() + "");
             boolean verificar = true;
@@ -1390,7 +1533,7 @@ public class Main extends javax.swing.JFrame {
         try {
             int pos = Integer.parseInt(combo.getSelectedItem() + "");
             int pos2 = Integer.parseInt(combo2.getSelectedItem() + "");
-
+            
             mode.setRowCount(0);
             for (int i = 0; i < GrafoNodos.length; i++) {
                 if (((NodoBi) GrafoNodos.get(i)).getNombre() == pos) {
@@ -1417,7 +1560,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-
+        
         try {
             StackNodos estack = new StackNodos(200);
             estack.push((NodoBi) GrafoNodos.get(0));
@@ -1443,7 +1586,7 @@ public class Main extends javax.swing.JFrame {
                         if (temp.getColor() == Color.blue && ((NodoBi) GrafoNodos.get(num - 1)).getColor() == Color.blue) {
                             bicolor = false;
                         }
-
+                        
                     } else {
                         estack.push((NodoBi) GrafoNodos.get(num - 1));
                     }
@@ -1455,8 +1598,108 @@ public class Main extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "El grafo no es bicoloreable");
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
     }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void destinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_destinoActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
+        while (cantidad <= 0) {
+            cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
+        }
+        Dijnodos = new ArrayList();
+        modelo = (DefaultComboBoxModel) origen.getModel();
+        modelo.removeAllElements();
+        for (int i = 0; i < cantidad; i++) {
+            Dijnodos.add(new NodoDij(i + 1));
+            modelo.addElement(i + 1);
+        }
+        
+        mode = (DefaultTableModel) tabla2.getModel();
+        mode.setRowCount(0);
+        modelo2 = (DefaultComboBoxModel) destino.getModel();
+        modelo2.removeAllElements();
+        
+        DiGrafo.pack();
+        DiGrafo.setModal(true);
+        DiGrafo.setVisible(true);
+        DiGrafo.setLocationRelativeTo(this);
+
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void origenItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_origenItemStateChanged
+        try {
+            int pos = Integer.parseInt(origen.getSelectedItem() + "");
+            boolean verificar = true;
+            //modelo2 = (DefaultComboBoxModel) combo2.getModel();
+            modelo2.removeAllElements();
+            boolean verificar2 = false;
+            int cont = 0;
+            for (int i = 0; i < Dijnodos.size(); i++) {
+                verificar = true;
+                verificar2 = false;
+                cont++;
+                for (int j = 0; j < Dijnodos.get(pos - 1).getArista().size(); j++) {
+                    if (cont == pos) {
+                        verificar = false;
+                    }
+                    if (cont == Dijnodos.get(pos - 1).getArista().get(j).getDestino()) {
+                        verificar = false;
+                    }
+                }
+                for (int j = 0; j < Dijnodos.get(i).getArista().size(); j++) {
+                    int num = Dijnodos.get(i).getArista().get(j).getDestino();  
+                    if (num == pos) {
+                        verificar = false;
+                        verificar2 = true;
+                    }
+                }
+                if (verificar && pos != i + 1) {
+                    if (verificar2) {
+                        modelo2.addElement(i + 1);
+                    }
+                    
+                }
+                if (verificar && pos != i+1) {
+                    modelo2.addElement(cont);
+                }
+            }
+        } catch (Exception e) {
+            /*e.printStackTrace();
+            JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");*/
+        }
+    }//GEN-LAST:event_origenItemStateChanged
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        try {
+            int pos = Integer.parseInt(origen.getSelectedItem() + "");
+            int pos2 = Integer.parseInt(destino.getSelectedItem() + "");
+            
+            mode.setRowCount(0);
+            for (int i = 0; i < Dijnodos.size(); i++) {
+                Arista temp = new Arista(pos, pos2, (int) spinner.getValue());
+                if (Dijnodos.get(i).getNombre() == pos) {
+                    Dijnodos.get(i).getArista().add(temp);
+                }
+                
+            }
+            
+            for (int i = 0; i < Dijnodos.size(); i++) {
+                for (int j = 0; j < Dijnodos.get(i).getArista().size(); j++) {
+                    Object row[] = {Dijnodos.get(i).getNombre(), Dijnodos.get(i).getArista().get(j).getDestino(), Dijnodos.get(i).getArista().get(j).getPeso()};
+                    mode.addRow(row);
+                }
+            }
+            modelo2.removeAllElements();
+        } catch (Exception e) {
+            //e.printStackTrace();
+            JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");
+        }
+    }//GEN-LAST:event_jButton26ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1495,9 +1738,11 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog BiGrafo;
+    private javax.swing.JDialog DiGrafo;
     private javax.swing.JTextArea calcu_text;
     private javax.swing.JComboBox<String> combo;
     private javax.swing.JComboBox<String> combo2;
+    private javax.swing.JComboBox<String> destino;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1515,6 +1760,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1523,9 +1770,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1538,8 +1789,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> origen;
+    private javax.swing.JSpinner spinner;
     private javax.swing.JTable tabla;
+    private javax.swing.JTable tabla2;
     private javax.swing.JTextArea text_area1;
     private javax.swing.JTextArea text_huffman;
     // End of variables declaration//GEN-END:variables
@@ -1548,19 +1804,14 @@ public class Main extends javax.swing.JFrame {
     static String Hacum = "";
     static List codes = new List(100);
     List GrafoNodos = new List(200);
+    ArrayList<NodoDij> Dijnodos;
     DefaultComboBoxModel modelo2;
     DefaultComboBoxModel modelo;
     DefaultTableModel mode;
-
+    
     public static void huff(Nodo root, String codigo) {
         if (root != null) {
             Caracter c = root.getData();
-            //root.setVisited(true);
-            /*if (c.getCaracter() != '▼') {
-                System.out.print(c.getCaracter());
-                System.out.print(" " + c.getNumero());
-                System.out.println("");
-            }*/
             if (!"2".equals(codigo)) {
                 Hacum += codigo;
             }
@@ -1569,34 +1820,17 @@ public class Main extends javax.swing.JFrame {
                 String temp = Hacum.substring(0, Hacum.length() - 1);
                 Hacum = temp;
             }
-
+            
             huff(root.getHojaI(), "0");
             if (c.getCaracter() == '•') {
                 Hacum = "";
             }
             huff(root.getHolaD(), "1");
-
+            
             if (Hacum.length() > 1) {
                 String temp = Hacum.substring(0, Hacum.length() - 1);
                 Hacum = temp;
             }
-        }
-    }
-
-    public static void recorridoGrafo(int i, int j, int[][] matrix) {
-        if (i != matrix.length - 1 && j != matrix.length - 1) {
-            if (matrix[i][j] == 0) {
-                if (j != matrix.length) {
-                    j++;
-                } else {
-                    j = 0;
-                    i++;
-                }
-            } else {
-
-            }
-        } else {
-
         }
     }
 }
