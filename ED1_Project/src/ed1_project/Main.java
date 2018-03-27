@@ -53,6 +53,17 @@ public class Main extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        FloGrafo = new javax.swing.JDialog();
+        jPanel13 = new javax.swing.JPanel();
+        jButton28 = new javax.swing.JButton();
+        origen1 = new javax.swing.JComboBox<>();
+        destino1 = new javax.swing.JComboBox<>();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tabla3 = new javax.swing.JTable();
+        spinner1 = new javax.swing.JSpinner();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -90,6 +101,8 @@ public class Main extends javax.swing.JFrame {
         jButton25 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
+        jButton29 = new javax.swing.JButton();
+        jButton30 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -304,6 +317,122 @@ public class Main extends javax.swing.JFrame {
         DiGrafoLayout.setVerticalGroup(
             DiGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel13.setBackground(new java.awt.Color(0, 102, 102));
+
+        jButton28.setText("Conectar");
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
+
+        origen1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                origen1ItemStateChanged(evt);
+            }
+        });
+
+        destino1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                destino1ActionPerformed(evt);
+            }
+        });
+
+        tabla3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Origen", "Destino", "Peso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tabla3);
+
+        spinner1.setModel(new javax.swing.SpinnerNumberModel(1, null, null, 1));
+        spinner1.setEditor(new javax.swing.JSpinner.NumberEditor(spinner1, ""));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Peso");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Origen");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Destino");
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(destino1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(origen1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel13Layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(spinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(origen1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(destino1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(17, 17, 17)
+                        .addComponent(jButton28))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout FloGrafoLayout = new javax.swing.GroupLayout(FloGrafo.getContentPane());
+        FloGrafo.getContentPane().setLayout(FloGrafoLayout);
+        FloGrafoLayout.setHorizontalGroup(
+            FloGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        FloGrafoLayout.setVerticalGroup(
+            FloGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -717,18 +846,42 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Dijkstra", jPanel6);
 
+        jButton29.setText("Crear Grafo");
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton29ActionPerformed(evt);
+            }
+        });
+
+        jButton30.setText("Calcular Costo Minimo");
+        jButton30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton30ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 628, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(461, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jButton29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton30)
+                .addContainerGap(361, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab6", jPanel7);
+        jTabbedPane1.addTab("FLOYD", jPanel7);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1690,8 +1843,8 @@ public class Main extends javax.swing.JFrame {
         try {
             int pos = Integer.parseInt(origen.getSelectedItem() + "");
             int pos2 = Integer.parseInt(destino.getSelectedItem() + "");
-
             mode.setRowCount(0);
+
             for (int i = 0; i < Dijnodos.size(); i++) {
                 Arista temp = new Arista(pos, pos2, (int) spinner.getValue());
                 if (Dijnodos.get(i).getNombre() == pos) {
@@ -1699,7 +1852,6 @@ public class Main extends javax.swing.JFrame {
                 }
 
             }
-
             for (int i = 0; i < Dijnodos.size(); i++) {
                 for (int j = 0; j < Dijnodos.get(i).getArista().size(); j++) {
                     Object row[] = {Dijnodos.get(i).getNombre(), Dijnodos.get(i).getArista().get(j).getDestino(), Dijnodos.get(i).getArista().get(j).getPeso()};
@@ -1707,6 +1859,8 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             modelo2.removeAllElements();
+            JOptionPane.showMessageDialog(BiGrafo, "Conectado");
+
         } catch (Exception e) {
             //e.printStackTrace();
             JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");
@@ -1730,7 +1884,7 @@ public class Main extends javax.swing.JFrame {
                 int weigth = Dijnodos.get(origin - 1).getArista().get(i).getPeso(), destiny = Dijnodos.get(origin - 1).getArista().get(i).getDestino();
                 arreglo[destiny - 1] = weigth;
             }
-       
+
             boolean controlar = true;
             for (int i = 0; i < Dijnodos.size(); i++) {
                 if (!Dijnodos.get(i).isVisitado()) {
@@ -1753,7 +1907,7 @@ public class Main extends javax.swing.JFrame {
                     int weigth = Dijnodos.get(posicion).getArista().get(i).getPeso();
                     int destiny = Dijnodos.get(posicion).getArista().get(i).getDestino();
                     if (arreglo[destiny - 1] != 0 && weigth < 500000) {
-                        arreglo[destiny - 1] = weigth+acumulado;
+                        arreglo[destiny - 1] = weigth + acumulado;
                     }
                 }
                 controlar = true;
@@ -1768,6 +1922,138 @@ public class Main extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        try {
+            if (((int) spinner1.getValue()) == 0) {
+                JOptionPane.showMessageDialog(FloGrafo, "Noje puede conectar");
+            } else {
+                int pos = Integer.parseInt(origen1.getSelectedItem() + "");
+                int pos2 = Integer.parseInt(destino1.getSelectedItem() + "");
+                mode.setRowCount(0);
+
+                for (int i = 0; i < flnodos.size(); i++) {
+                    Arista temp = new Arista(pos, pos2, (int) spinner1.getValue());
+                    if (flnodos.get(i).getNombre() == pos) {
+                        flnodos.get(i).getArista().add(temp);
+                    }
+                }
+                for (int i = 0; i < flnodos.size(); i++) {
+                    for (int j = 0; j < flnodos.get(i).getArista().size(); j++) {
+                        Object row[] = {flnodos.get(i).getNombre(), flnodos.get(i).getArista().get(j).getDestino(), flnodos.get(i).getArista().get(j).getPeso()};
+                        mode.addRow(row);
+                    }
+                }
+                modelo2.removeAllElements();
+                //JOptionPane.showMessageDialog(FloGrafo, "Conectado");
+            }
+
+        } catch (Exception e) {
+            //e.printStackTrace();
+            JOptionPane.showMessageDialog(FloGrafo, "Ocurrio un error");
+        }
+    }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void origen1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_origen1ItemStateChanged
+        try {
+            int pos = Integer.parseInt(origen1.getSelectedItem() + "");
+            boolean verificar = true;
+            //modelo2 = (DefaultComboBoxModel) combo2.getModel();
+            modelo2.removeAllElements();
+            boolean verificar2 = false;
+            int cont = 0;
+            for (int i = 0; i < flnodos.size(); i++) {
+                verificar = true;
+                verificar2 = false;
+                cont++;
+                for (int j = 0; j < flnodos.get(pos - 1).getArista().size(); j++) {
+                    if (cont == pos) {
+                        verificar = false;
+                    }
+                    if (cont == flnodos.get(pos - 1).getArista().get(j).getDestino()) {
+                        verificar = false;
+                    }
+                }
+                for (int j = 0; j < flnodos.get(i).getArista().size(); j++) {
+                    int num = flnodos.get(i).getArista().get(j).getDestino();
+                    if (num == pos) {
+                        verificar = false;
+                        verificar2 = true;
+                    }
+                }
+                if (verificar && pos != i + 1) {
+                    if (verificar2) {
+                        modelo2.addElement(i + 1);
+                    }
+                }
+                if (verificar && pos != i + 1) {
+                    modelo2.addElement(cont);
+                }
+            }
+        } catch (Exception e) {
+            /*e.printStackTrace();
+            JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");*/
+        }
+    }//GEN-LAST:event_origen1ItemStateChanged
+
+    private void destino1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destino1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_destino1ActionPerformed
+
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
+        while (cantidad <= 0) {
+            cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
+        }
+        flnodos = new ArrayList();
+        modelo = (DefaultComboBoxModel) origen1.getModel();
+        modelo.removeAllElements();
+        for (int i = 0; i < cantidad; i++) {
+            flnodos.add(new NodoDij(i + 1));
+            modelo.addElement(i + 1);
+        }
+
+        mode = (DefaultTableModel) tabla3.getModel();
+        mode.setRowCount(0);
+        modelo2 = (DefaultComboBoxModel) destino1.getModel();
+        modelo2.removeAllElements();
+
+        FloGrafo.pack();
+        FloGrafo.setModal(true);
+        FloGrafo.setVisible(true);
+        FloGrafo.setLocationRelativeTo(this);
+    }//GEN-LAST:event_jButton29ActionPerformed
+
+    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+        int[][] matrix = new int[flnodos.size()][flnodos.size()];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                matrix[i][j] = 500000;
+                if (i == j) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < flnodos.get(i).getArista().size(); j++) {
+                int destiny = flnodos.get(i).getArista().get(j).getDestino();
+                int weigth = flnodos.get(i).getArista().get(j).getPeso();
+                matrix[i][destiny-1] = weigth;
+            }
+        }
+        System.out.println(Arrays.deepToString(matrix));
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                for (int k = 0; k < matrix.length; k++) {
+                    if (matrix[j][i] + matrix[i][k] < matrix[j][k]) {
+                        matrix[j][k] = matrix[j][i] + matrix[i][k];
+                    }
+                }
+            }
+        }
+        System.out.println(Arrays.deepToString(matrix));
+    }//GEN-LAST:event_jButton30ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1807,10 +2093,12 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog BiGrafo;
     private javax.swing.JDialog DiGrafo;
+    private javax.swing.JDialog FloGrafo;
     private javax.swing.JTextArea calcu_text;
     private javax.swing.JComboBox<String> combo;
     private javax.swing.JComboBox<String> combo2;
     private javax.swing.JComboBox<String> destino;
+    private javax.swing.JComboBox<String> destino1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1831,7 +2119,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -1842,10 +2133,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1859,12 +2154,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JComboBox<String> origen;
+    private javax.swing.JComboBox<String> origen1;
     private javax.swing.JSpinner spinner;
+    private javax.swing.JSpinner spinner1;
     private javax.swing.JTable tabla;
     private javax.swing.JTable tabla2;
+    private javax.swing.JTable tabla3;
     private javax.swing.JTextArea text_area1;
     private javax.swing.JTextArea text_huffman;
     // End of variables declaration//GEN-END:variables
@@ -1873,6 +2172,7 @@ public class Main extends javax.swing.JFrame {
     static String Hacum = "";
     static List codes = new List(100);
     List GrafoNodos = new List(200);
+    ArrayList<NodoDij> flnodos;
     ArrayList<NodoDij> Dijnodos;
     DefaultComboBoxModel modelo2;
     DefaultComboBoxModel modelo;
