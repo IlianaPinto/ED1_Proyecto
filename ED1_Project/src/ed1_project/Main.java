@@ -88,6 +88,7 @@ public class Main extends javax.swing.JFrame {
         text_huffman = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         jButton25 = new javax.swing.JButton();
+        jButton27 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -679,10 +680,17 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Compresion de Archivos", jPanel4);
 
-        jButton25.setText("Crear");
+        jButton25.setText("Crear Grafo");
         jButton25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton25ActionPerformed(evt);
+            }
+        });
+
+        jButton27.setText("Calcular Costo Minimo");
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
             }
         });
 
@@ -692,15 +700,19 @@ public class Main extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jButton25)
-                .addContainerGap(524, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(446, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jButton25)
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton27)
+                .addContainerGap(349, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dijkstra", jPanel6);
@@ -871,7 +883,7 @@ public class Main extends javax.swing.JFrame {
                 }
                 text_area1.append("\n");
             }
-            
+
         } catch (HeadlessException | IOException e) {
             e.printStackTrace();
         }
@@ -885,7 +897,7 @@ public class Main extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             boolean salida = true;
-            
+
             ArrayStack laberinto = new ArrayStack(200);
             laberinto.push(new Posicion(0, 0, matriz[0][0] + ""));
             laberinto.push(new Posicion(1, 1, matriz[1][1] + ""));
@@ -903,11 +915,11 @@ public class Main extends javax.swing.JFrame {
                 if (cont == 0) {
                     break;
                 }
-                
+
                 if (matriz[laberinto.Top().getPosicioni()][laberinto.Top().getPosicionj()] != 0) {
                     laberinto.Top().setCaracter("8");
                 }
-                
+
                 if (!"0".equals(laberinto.Top().getCaracter())) {
                     laberinto.Pop();
                 } else if (laberinto.Top().getPosicionj() == matriz.length - 1) {
@@ -916,7 +928,7 @@ public class Main extends javax.swing.JFrame {
                 } else {
                     Posicion temporal = laberinto.Top();
                     matriz[laberinto.Top().getPosicioni()][laberinto.Top().getPosicionj()] = 8;
-                    
+
                     if (temporal.getPosicioni() - 1 >= 0) {
                         laberinto.push(new Posicion(temporal.getPosicioni() - 1, temporal.getPosicionj(), matriz[temporal.getPosicioni() - 1][temporal.getPosicionj()] + ""));
                     }
@@ -936,7 +948,7 @@ public class Main extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Se ha encontrado la ruta de salida ☺");
             }
-            
+
             text_area1.setText("");
             for (int i = 0; i < matriz.length; i++) {
                 for (int j = 0; j < matriz.length; j++) {
@@ -1031,7 +1043,7 @@ public class Main extends javax.swing.JFrame {
             String acum = "";
             for (int i = 0; i < cadena.length(); i++) {
                 if (cadena.charAt(i) == '*' || cadena.charAt(i) == '/' || cadena.charAt(i) == '-' || cadena.charAt(i) == '+') {
-                    
+
                 } else {
                     acum += cadena.charAt(i);
                 }
@@ -1053,7 +1065,7 @@ public class Main extends javax.swing.JFrame {
                         lista.set(i + 1, "");
                         break;
                     } else {
-                        
+
                     }
                 }
                 boolean seguir = true;
@@ -1068,7 +1080,7 @@ public class Main extends javax.swing.JFrame {
                         }
                     }
                 } while (seguir);
-                
+
                 for (int i = 0; i < lista.length; i++) {
                     if (lista.get(i).equals("*")) {
                         multiplicar = true;
@@ -1090,7 +1102,7 @@ public class Main extends javax.swing.JFrame {
                         lista.set(i + 1, "");
                         break;
                     } else {
-                        
+
                     }
                 }
                 boolean seguir = true;
@@ -1105,7 +1117,7 @@ public class Main extends javax.swing.JFrame {
                         }
                     }
                 } while (seguir);
-                
+
                 for (int i = 0; i < lista.length; i++) {
                     if (lista.get(i).equals("/")) {
                         dividir = true;
@@ -1127,7 +1139,7 @@ public class Main extends javax.swing.JFrame {
                         lista.set(i + 1, "");
                         break;
                     } else {
-                        
+
                     }
                 }
                 boolean seguir = true;
@@ -1142,7 +1154,7 @@ public class Main extends javax.swing.JFrame {
                         }
                     }
                 } while (seguir);
-                
+
                 for (int i = 0; i < lista.length; i++) {
                     if (lista.get(i).equals("+")) {
                         sumar = true;
@@ -1164,7 +1176,7 @@ public class Main extends javax.swing.JFrame {
                         lista.set(i + 1, "");
                         break;
                     } else {
-                        
+
                     }
                 }
                 boolean seguir = true;
@@ -1179,7 +1191,7 @@ public class Main extends javax.swing.JFrame {
                         }
                     }
                 } while (seguir);
-                
+
                 for (int i = 0; i < lista.length; i++) {
                     if (lista.get(i).equals("*")) {
                         restar = true;
@@ -1215,7 +1227,7 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
-        
+
         text_huffman.append(texto);
 
     }//GEN-LAST:event_jButton20ActionPerformed
@@ -1231,14 +1243,14 @@ public class Main extends javax.swing.JFrame {
             for (int i = 0; i < texto.length(); i++) {
                 l.add(texto.charAt(i));
             }
-            
+
             for (int i = 0; i < l.size(); i++) {
                 int cont = 1;
                 for (int j = i + 1; j < l.size(); j++) {
                     if (((char) l.get(i)) == ((char) l.get(j)) && ((char) l.get(i)) != '♀') {
                         cont++;
                     }
-                    
+
                 }
                 char letra = ((char) l.get(i));
                 if (((char) l.get(i)) != '♀') {
@@ -1250,14 +1262,14 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             }
-            
+
             List arboles = new List(200);
             for (int i = 0; i < lista.length; i++) {
                 Nodo root = new Nodo(((Caracter) lista.get(i)));
                 Arbol arbol = new Arbol(root);
                 arboles.insert(arbol);
             }
-            
+
             boolean salir = true;
             do {
                 for (int i = 0; i < arboles.length; i++) {
@@ -1277,7 +1289,7 @@ public class Main extends javax.swing.JFrame {
                         }
                     }
                 }
-                
+
                 if (arboles.length == 1) {
                     salir = false;
                 } else {
@@ -1298,9 +1310,9 @@ public class Main extends javax.swing.JFrame {
                     arboles.insert(nuevo);
                 }
             } while (salir);
-            
+
             Arbol huffman = ((Arbol) arboles.get(0));
-            
+
             huffman.getRaiz().getData().setCaracter('•');
             huff(huffman.getRaiz(), "2");
             //text_huffman.setText("");
@@ -1327,9 +1339,9 @@ public class Main extends javax.swing.JFrame {
                 
             }*/
             String tempo = ((Caracter) codes.get(codes.length - 1)).getCode();
-            
+
             tempo += "1";
-            
+
             ((Caracter) codes.get(codes.length - 1)).setCode(tempo);
             String acumulador = "";
             for (int i = 0; i < texto.length(); i++) {
@@ -1351,7 +1363,7 @@ public class Main extends javax.swing.JFrame {
                         }
                         exp--;
                     }
-                    
+
                     char letra = (char) (numero);
                     comprimido += letra;
                     cont = 0;
@@ -1364,18 +1376,18 @@ public class Main extends javax.swing.JFrame {
                     comprimido += acum2;
                 }
             }
-            
+
             text_huffman.append("\n" + "Texto comprimido: " + comprimido);
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
-        
+
 
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        
+
         try {
             /*int cantidadNodos = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
             while (cantidadNodos <= 0) {
@@ -1470,7 +1482,7 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         try {
             if (!GrafoNodos.isEmpty()) {
                 GrafoNodos.clear();
@@ -1485,12 +1497,12 @@ public class Main extends javax.swing.JFrame {
                 GrafoNodos.insert(new NodoBi(i));
                 modelo.addElement(i);
             }
-            
+
             mode = (DefaultTableModel) tabla.getModel();
             mode.setRowCount(0);
             modelo2 = (DefaultComboBoxModel) combo2.getModel();
             modelo2.removeAllElements();
-            
+
             BiGrafo.pack();
             BiGrafo.setModal(true);
             BiGrafo.setVisible(true);
@@ -1499,12 +1511,12 @@ public class Main extends javax.swing.JFrame {
             //e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
-        
+
 
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboItemStateChanged
-        
+
         try {
             int pos = Integer.parseInt(combo.getSelectedItem() + "");
             boolean verificar = true;
@@ -1533,7 +1545,7 @@ public class Main extends javax.swing.JFrame {
         try {
             int pos = Integer.parseInt(combo.getSelectedItem() + "");
             int pos2 = Integer.parseInt(combo2.getSelectedItem() + "");
-            
+
             mode.setRowCount(0);
             for (int i = 0; i < GrafoNodos.length; i++) {
                 if (((NodoBi) GrafoNodos.get(i)).getNombre() == pos) {
@@ -1560,7 +1572,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        
+
         try {
             StackNodos estack = new StackNodos(200);
             estack.push((NodoBi) GrafoNodos.get(0));
@@ -1586,7 +1598,7 @@ public class Main extends javax.swing.JFrame {
                         if (temp.getColor() == Color.blue && ((NodoBi) GrafoNodos.get(num - 1)).getColor() == Color.blue) {
                             bicolor = false;
                         }
-                        
+
                     } else {
                         estack.push((NodoBi) GrafoNodos.get(num - 1));
                     }
@@ -1618,12 +1630,12 @@ public class Main extends javax.swing.JFrame {
             Dijnodos.add(new NodoDij(i + 1));
             modelo.addElement(i + 1);
         }
-        
+
         mode = (DefaultTableModel) tabla2.getModel();
         mode.setRowCount(0);
         modelo2 = (DefaultComboBoxModel) destino.getModel();
         modelo2.removeAllElements();
-        
+
         DiGrafo.pack();
         DiGrafo.setModal(true);
         DiGrafo.setVisible(true);
@@ -1652,7 +1664,7 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
                 for (int j = 0; j < Dijnodos.get(i).getArista().size(); j++) {
-                    int num = Dijnodos.get(i).getArista().get(j).getDestino();  
+                    int num = Dijnodos.get(i).getArista().get(j).getDestino();
                     if (num == pos) {
                         verificar = false;
                         verificar2 = true;
@@ -1662,9 +1674,9 @@ public class Main extends javax.swing.JFrame {
                     if (verificar2) {
                         modelo2.addElement(i + 1);
                     }
-                    
+
                 }
-                if (verificar && pos != i+1) {
+                if (verificar && pos != i + 1) {
                     modelo2.addElement(cont);
                 }
             }
@@ -1678,16 +1690,16 @@ public class Main extends javax.swing.JFrame {
         try {
             int pos = Integer.parseInt(origen.getSelectedItem() + "");
             int pos2 = Integer.parseInt(destino.getSelectedItem() + "");
-            
+
             mode.setRowCount(0);
             for (int i = 0; i < Dijnodos.size(); i++) {
                 Arista temp = new Arista(pos, pos2, (int) spinner.getValue());
                 if (Dijnodos.get(i).getNombre() == pos) {
                     Dijnodos.get(i).getArista().add(temp);
                 }
-                
+
             }
-            
+
             for (int i = 0; i < Dijnodos.size(); i++) {
                 for (int j = 0; j < Dijnodos.get(i).getArista().size(); j++) {
                     Object row[] = {Dijnodos.get(i).getNombre(), Dijnodos.get(i).getArista().get(j).getDestino(), Dijnodos.get(i).getArista().get(j).getPeso()};
@@ -1700,6 +1712,62 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");
         }
     }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        try {
+            int origin = Integer.parseInt(JOptionPane.showInputDialog(this, "Cual es el origen?"));
+            while (origin > Dijnodos.size() || origin <= 0) {
+                origin = Integer.parseInt(JOptionPane.showInputDialog(this, "Cual es el origen?"));
+            }
+            Dijnodos.get(origin - 1).setVisitado(true);
+            int[] arreglo = new int[Dijnodos.size()];
+            for (int i = 0; i < arreglo.length; i++) {
+                arreglo[i] = 500000;
+            }
+            arreglo[origin - 1] = 0;
+
+            for (int i = 0; i < Dijnodos.get(origin - 1).getArista().size(); i++) {
+                int weigth = Dijnodos.get(origin - 1).getArista().get(i).getPeso(), destiny = Dijnodos.get(origin - 1).getArista().get(i).getDestino();
+                arreglo[destiny - 1] = weigth;
+            }
+       
+            boolean controlar = true;
+            for (int i = 0; i < Dijnodos.size(); i++) {
+                if (!Dijnodos.get(i).isVisitado()) {
+                    controlar = false;
+                }
+            }
+            System.out.println(Arrays.toString(arreglo));
+            while (!controlar) {
+                int menor = 100, posicion = 0;
+                for (int i = 0; i < Dijnodos.size(); i++) {
+                    if ((menor > arreglo[i]) && (arreglo[i] != 0) && (!Dijnodos.get(i).isVisitado())) {
+                        menor = arreglo[i];
+                        posicion = i;
+                    }
+                }
+                Dijnodos.get(posicion).setVisitado(true);
+                int[] temp = arreglo;
+                int acumulado = arreglo[posicion];
+                for (int i = 0; i < Dijnodos.get(posicion).getArista().size(); i++) {
+                    int weigth = Dijnodos.get(posicion).getArista().get(i).getPeso();
+                    int destiny = Dijnodos.get(posicion).getArista().get(i).getDestino();
+                    if (arreglo[destiny - 1] != 0 && weigth < 500000) {
+                        arreglo[destiny - 1] = weigth+acumulado;
+                    }
+                }
+                controlar = true;
+                for (int i = 0; i < Dijnodos.size(); i++) {
+                    if (!Dijnodos.get(i).isVisitado()) {
+                        controlar = false;
+                    }
+                }
+            }
+            System.out.println(Arrays.toString(arreglo));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton27ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1762,6 +1830,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1808,7 +1877,7 @@ public class Main extends javax.swing.JFrame {
     DefaultComboBoxModel modelo2;
     DefaultComboBoxModel modelo;
     DefaultTableModel mode;
-    
+
     public static void huff(Nodo root, String codigo) {
         if (root != null) {
             Caracter c = root.getData();
@@ -1820,13 +1889,13 @@ public class Main extends javax.swing.JFrame {
                 String temp = Hacum.substring(0, Hacum.length() - 1);
                 Hacum = temp;
             }
-            
+
             huff(root.getHojaI(), "0");
             if (c.getCaracter() == '•') {
                 Hacum = "";
             }
             huff(root.getHolaD(), "1");
-            
+
             if (Hacum.length() > 1) {
                 String temp = Hacum.substring(0, Hacum.length() - 1);
                 Hacum = temp;
