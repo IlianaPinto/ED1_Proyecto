@@ -1,6 +1,7 @@
 package ed1_project;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.HeadlessException;
 import java.io.BufferedReader;
 import java.io.File;
@@ -100,14 +101,17 @@ public class Main extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jButton25 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
+        dibujo = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jButton29 = new javax.swing.JButton();
         jButton30 = new javax.swing.JButton();
+        dibujo1 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jButton22 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
+        dibujo2 = new javax.swing.JPanel();
 
         jPanel11.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -485,7 +489,7 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Backtracking", jPanel2);
@@ -756,7 +760,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Solucion Matematica", jPanel3);
@@ -804,7 +808,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jButton21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Compresion de Archivos", jPanel4);
@@ -823,25 +827,45 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        dibujo.setBackground(new java.awt.Color(255, 255, 255));
+        dibujo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout dibujoLayout = new javax.swing.GroupLayout(dibujo);
+        dibujo.setLayout(dibujoLayout);
+        dibujoLayout.setHorizontalGroup(
+            dibujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        dibujoLayout.setVerticalGroup(
+            dibujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 269, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(446, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton27)
+                .addContainerGap(318, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(dibujo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jButton25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton27)
-                .addContainerGap(349, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton25)
+                    .addComponent(jButton27))
+                .addGap(41, 41, 41)
+                .addComponent(dibujo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dijkstra", jPanel6);
@@ -860,25 +884,49 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        dibujo1.setBackground(new java.awt.Color(255, 255, 255));
+        dibujo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout dibujo1Layout = new javax.swing.GroupLayout(dibujo1);
+        dibujo1.setLayout(dibujo1Layout);
+        dibujo1Layout.setHorizontalGroup(
+            dibujo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        dibujo1Layout.setVerticalGroup(
+            dibujo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 269, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(461, Short.MAX_VALUE))
+                .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton30)
+                .addContainerGap(318, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(dibujo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jButton29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton30)
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton29)
+                    .addComponent(jButton30))
+                .addContainerGap(379, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(88, 88, 88)
+                    .addComponent(dibujo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(73, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("FLOYD", jPanel7);
@@ -891,10 +939,10 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 432, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab7", jPanel8);
+        jTabbedPane1.addTab("Expansion Minima", jPanel8);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -904,10 +952,10 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 432, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab8", jPanel9);
+        jTabbedPane1.addTab("Desempeño", jPanel9);
 
         jButton22.setText("Crear Grafo");
         jButton22.addActionListener(new java.awt.event.ActionListener() {
@@ -923,25 +971,49 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        dibujo2.setBackground(new java.awt.Color(255, 255, 255));
+        dibujo2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout dibujo2Layout = new javax.swing.GroupLayout(dibujo2);
+        dibujo2.setLayout(dibujo2Layout);
+        dibujo2Layout.setHorizontalGroup(
+            dibujo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        dibujo2Layout.setVerticalGroup(
+            dibujo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 269, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(467, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jButton22)
+                .addGap(18, 18, 18)
+                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(406, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(dibujo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(340, Short.MAX_VALUE)
-                .addComponent(jButton24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton22)
-                .addGap(56, 56, 56))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton22)
+                    .addComponent(jButton24))
+                .addContainerGap(364, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(88, 88, 88)
+                    .addComponent(dibujo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(73, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Grafo Bicoloreable", jPanel5);
@@ -1542,101 +1614,6 @@ public class Main extends javax.swing.JFrame {
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
 
         try {
-            /*int cantidadNodos = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
-            while (cantidadNodos <= 0) {
-                cantidadNodos = Integer.parseInt(JOptionPane.showInputDialog(this, "Numero ingresado incorrecto, ingrese nuevamente"));
-            }
-            List nodos = new List(200);
-            for (int i = 0; i < cantidadNodos; i++) {
-                nodos.insert(new NodoBi(i + 1));
-            }
-
-            for (int i = 1; i <= cantidadNodos; i++) {
-                boolean seguir = true;
-                int cont = 0;
-                do {
-
-                    boolean isIn = false;
-                    int conectado = Integer.parseInt(JOptionPane.showInputDialog(this, "A que nodo esta conectado el nodo: " + i));
-                    for (int j = 0; j < ((NodoBi) nodos.get(i - 1)).getAristas().length; j++) {
-                        List a = ((NodoBi) nodos.get(i - 1)).getAristas();
-
-                        if (conectado == ((int) a.get(j))) {
-                            isIn = true;
-                        }
-                    }
-                    while (conectado == i || conectado <= 0 || conectado > cantidadNodos || isIn) {
-                        conectado = Integer.parseInt(JOptionPane.showInputDialog(this, "Numero incorrecto, ingrese nuevamente"));
-                        isIn = false;
-                        for (int j = 0; j < ((NodoBi) nodos.get(i - 1)).getAristas().length; j++) {
-                            List a = ((NodoBi) nodos.get(i - 1)).getAristas();
-
-                            if (conectado == ((int) a.get(j))) {
-                                isIn = true;
-                            }
-                        }
-                    }
-                    ((NodoBi) nodos.get(i - 1)).getAristas().insert(conectado);
-                    cont++;
-                    String opcion = "s";
-                    if (cont != cantidadNodos - 1) {
-                        opcion = JOptionPane.showInputDialog(this, "Desea agregar mas aristas? [s/n]");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "El nodo no se puede conectar a mas nodos");
-                        cont = 0;
-                        seguir = false;
-                    }
-                    if ("n".equals(opcion)) {
-                        seguir = false;
-                    }
-                } while (seguir);
-
-            }
-            Grafo graph = new Grafo(nodos);
-
-            int matrix[][] = new int[cantidadNodos][cantidadNodos];
-            for (int i = 0; i < cantidadNodos; i++) {
-                for (int j = 0; j < cantidadNodos; j++) {
-                    matrix[i][j] = 0;
-                }
-            }
-            for (int i = 0; i < cantidadNodos; i++) {
-                List temporal = ((NodoBi) nodos.get(i)).getAristas();
-                for (int j = 0; j < temporal.length; j++) {
-                    int num = ((int) temporal.get(j));
-                    matrix[i][num - 1] = 1;
-                    matrix[num - 1][i] = 1;
-                }
-            }
-            
-            for (int i = 0; i < cantidadNodos; i++) {
-                boolean is = false;
-                for (int j = 0; j < cantidadNodos; j++) {
-                    is = false;
-                    if(matrix[i][j] == 1){
-                        for (int k = 0; k <((NodoBi) nodos.get(j)).getAristas().length; k++) {
-                            int numero = ((int) ((NodoBi) nodos.get(j)).getAristas().get(k));
-                            if(numero==i+1){
-                                is = true;
-                            }
-                        }
-                        if(!is){
-                            ((NodoBi) nodos.get(j)).getAristas().insert(i+1);
-                        }
-                    }
-                }
-            }
-            StackNodos estack = new StackNodos(200);
-            estack.push((NodoBi) nodos.get(0));
-            ((NodoBi) nodos.get(0)).setVisitado(true);
-            while (!estack.isEmpty()) {
-
-            }*/
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
             if (!GrafoNodos.isEmpty()) {
                 GrafoNodos.clear();
             }
@@ -1649,6 +1626,44 @@ public class Main extends javax.swing.JFrame {
             for (int i = 1; i <= cantidad; i++) {
                 GrafoNodos.insert(new NodoBi(i));
                 modelo.addElement(i);
+            }
+
+            Graphics g = dibujo2.getGraphics();
+            g.setColor(Color.white);
+            g.fillRect(1, 1, 605, 269);
+            g.setColor(Color.LIGHT_GRAY);
+            int contx = 40, conty = 100;
+            int mitad;
+            if (cantidad % 2 == 0) {
+                mitad = cantidad / 2;
+            } else {
+                mitad = (cantidad / 2) + 1;
+            }
+            int cont = 1;
+            cordenadasx = new ArrayList();
+            cordenadasy = new ArrayList();
+            for (int i = 0; i < cantidad; i++) {
+                cordenadasx.add(contx);
+                cordenadasy.add(conty);
+                g.setColor(Color.lightGray);
+                g.fillOval(contx, conty, 30, 30);
+                g.setColor(Color.black);
+                g.drawString(i + 1 + "", contx + 13, conty + 17);
+                if (cont == 1) {
+                    conty -= 60;
+                    contx += 60;
+                } else if (cont < mitad) {
+                    contx += 60;
+                } else if (cont == mitad) {
+                    conty += 60;
+                    contx += 60;
+                } else if (cont == mitad + 1) {
+                    conty += 60;
+                    contx -= 60;
+                } else {
+                    contx -= 60;
+                }
+                cont++;
             }
 
             mode = (DefaultTableModel) tabla.getModel();
@@ -1718,6 +1733,9 @@ public class Main extends javax.swing.JFrame {
                 mode.addRow(row);
             }
             modelo2.removeAllElements();
+            Graphics g = dibujo.getGraphics();
+            g.setColor(Color.black);
+            g.drawLine(cordenadasx.get(pos - 1) + 10, cordenadasy.get(pos - 1) + 10, cordenadasx.get(pos2 - 1) + 10, cordenadasy.get(pos2 - 1) + 10);
         } catch (Exception e) {
             //e.printStackTrace();
             JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");
@@ -1725,7 +1743,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-
+        Graphics g = dibujo2.getGraphics();
         try {
             StackNodos estack = new StackNodos(200);
             estack.push((NodoBi) GrafoNodos.get(0));
@@ -1757,6 +1775,19 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             }
+            
+            for (int i = 0; i < GrafoNodos.length; i++) {
+                if (((NodoBi)GrafoNodos.get(i)).getColor() == Color.BLUE) {
+                    g.setColor(Color.BLUE);
+                }else if (((NodoBi)GrafoNodos.get(i)).getColor() == Color.red){
+                    g.setColor(Color.red);
+                }else{
+                    g.setColor(Color.lightGray);
+                }
+                g.fillOval(cordenadasx.get(i), cordenadasy.get(i), 30, 30);
+                g.setColor(Color.white);
+                g.drawString(i + 1 + "", cordenadasx.get(i)+ 13, cordenadasy.get(i) + 17);//esto se hara siempre
+            }
             if (bicolor) {
                 JOptionPane.showMessageDialog(this, "El grafo es bicoloreable");
             } else {
@@ -1772,6 +1803,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_destinoActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+
         int cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
         while (cantidad <= 0) {
             cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
@@ -1783,6 +1815,44 @@ public class Main extends javax.swing.JFrame {
             Dijnodos.add(new NodoDij(i + 1));
             modelo.addElement(i + 1);
         }
+        //pintar el grafo
+        Graphics g = dibujo.getGraphics();
+        g.setColor(Color.white);
+        g.fillRect(1, 1, 605, 269);
+        g.setColor(Color.PINK);
+        int contx = 40, conty = 100;
+        int mitad;
+        if (cantidad % 2 == 0) {
+            mitad = cantidad / 2;
+        } else {
+            mitad = (cantidad / 2) + 1;
+        }
+        int cont = 1;
+        cordenadasx = new ArrayList();
+        cordenadasy = new ArrayList();
+        for (int i = 0; i < cantidad; i++) {
+            cordenadasx.add(contx);
+            cordenadasy.add(conty);
+            g.setColor(Color.PINK);
+            g.fillOval(contx, conty, 30, 30);
+            g.setColor(Color.black);
+            g.drawString(i + 1 + "", contx + 13, conty + 17);
+            if (cont == 1) {
+                conty -= 60;
+                contx += 60;
+            } else if (cont < mitad) {
+                contx += 60;
+            } else if (cont == mitad) {
+                conty += 60;
+                contx += 60;
+            } else if (cont == mitad + 1) {
+                conty += 60;
+                contx -= 60;
+            } else {
+                contx -= 60;
+            }
+            cont++;
+        }
 
         mode = (DefaultTableModel) tabla2.getModel();
         mode.setRowCount(0);
@@ -1793,6 +1863,7 @@ public class Main extends javax.swing.JFrame {
         DiGrafo.setModal(true);
         DiGrafo.setVisible(true);
         DiGrafo.setLocationRelativeTo(this);
+
 
     }//GEN-LAST:event_jButton25ActionPerformed
 
@@ -1859,11 +1930,17 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             modelo2.removeAllElements();
-            JOptionPane.showMessageDialog(BiGrafo, "Conectado");
-
+            //JOptionPane.showMessageDialog(BiGrafo, "Conectado");
+            Graphics g = dibujo.getGraphics();
+            g.setColor(Color.black);
+            g.drawLine(cordenadasx.get(pos - 1) + 10, cordenadasy.get(pos - 1) + 10, cordenadasx.get(pos2 - 1) + 10, cordenadasy.get(pos2 - 1) + 10);
+            int midx, midy;
+            midx = (cordenadasx.get(pos - 1) + 10 + cordenadasx.get(pos2 - 1) + 10) / 2;
+            midy = (cordenadasy.get(pos - 1) + 10 + cordenadasy.get(pos2 - 1) + 10) / 2;
+            g.drawString(spinner.getValue() + "", midx, midy);
         } catch (Exception e) {
-            //e.printStackTrace();
-            JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");
+            e.printStackTrace();
+            // JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");
         }
     }//GEN-LAST:event_jButton26ActionPerformed
 
@@ -1926,7 +2003,7 @@ public class Main extends javax.swing.JFrame {
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         try {
             if (((int) spinner1.getValue()) == 0) {
-                JOptionPane.showMessageDialog(FloGrafo, "Noje puede conectar");
+                JOptionPane.showMessageDialog(FloGrafo, "No se puede conectar");
             } else {
                 int pos = Integer.parseInt(origen1.getSelectedItem() + "");
                 int pos2 = Integer.parseInt(destino1.getSelectedItem() + "");
@@ -1945,6 +2022,13 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
                 modelo2.removeAllElements();
+                Graphics g = dibujo1.getGraphics();
+                g.setColor(Color.black);
+                g.drawLine(cordenadasx.get(pos - 1) + 10, cordenadasy.get(pos - 1) + 10, cordenadasx.get(pos2 - 1) + 10, cordenadasy.get(pos2 - 1) + 10);
+                int midx, midy;
+                midx = (cordenadasx.get(pos - 1) + 10 + cordenadasx.get(pos2 - 1) + 10) / 2;
+                midy = (cordenadasy.get(pos - 1) + 10 + cordenadasy.get(pos2 - 1) + 10) / 2;
+                g.drawString(spinner1.getValue() + "", midx, midy);
                 //JOptionPane.showMessageDialog(FloGrafo, "Conectado");
             }
 
@@ -2013,6 +2097,44 @@ public class Main extends javax.swing.JFrame {
             modelo.addElement(i + 1);
         }
 
+        Graphics g = dibujo1.getGraphics();
+        g.setColor(Color.white);
+        g.fillRect(1, 1, 605, 269);
+        g.setColor(Color.ORANGE);
+        int contx = 40, conty = 100;
+        int mitad;
+        if (cantidad % 2 == 0) {
+            mitad = cantidad / 2;
+        } else {
+            mitad = (cantidad / 2) + 1;
+        }
+        int cont = 1;
+        cordenadasx = new ArrayList();
+        cordenadasy = new ArrayList();
+        for (int i = 0; i < cantidad; i++) {
+            cordenadasx.add(contx);
+            cordenadasy.add(conty);
+            g.setColor(Color.ORANGE);
+            g.fillOval(contx, conty, 30, 30);
+            g.setColor(Color.black);
+            g.drawString(i + 1 + "", contx + 13, conty + 17);
+            if (cont == 1) {
+                conty -= 60;
+                contx += 60;
+            } else if (cont < mitad) {
+                contx += 60;
+            } else if (cont == mitad) {
+                conty += 60;
+                contx += 60;
+            } else if (cont == mitad + 1) {
+                conty += 60;
+                contx -= 60;
+            } else {
+                contx -= 60;
+            }
+            cont++;
+        }
+
         mode = (DefaultTableModel) tabla3.getModel();
         mode.setRowCount(0);
         modelo2 = (DefaultComboBoxModel) destino1.getModel();
@@ -2034,12 +2156,12 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < flnodos.get(i).getArista().size(); j++) {
                 int destiny = flnodos.get(i).getArista().get(j).getDestino();
                 int weigth = flnodos.get(i).getArista().get(j).getPeso();
-                matrix[i][destiny-1] = weigth;
+                matrix[i][destiny - 1] = weigth;
             }
         }
         System.out.println(Arrays.deepToString(matrix));
@@ -2099,6 +2221,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> combo2;
     private javax.swing.JComboBox<String> destino;
     private javax.swing.JComboBox<String> destino1;
+    private javax.swing.JPanel dibujo;
+    private javax.swing.JPanel dibujo1;
+    private javax.swing.JPanel dibujo2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -2177,6 +2302,8 @@ public class Main extends javax.swing.JFrame {
     DefaultComboBoxModel modelo2;
     DefaultComboBoxModel modelo;
     DefaultTableModel mode;
+    ArrayList<Integer> cordenadasx = new ArrayList();
+    ArrayList<Integer> cordenadasy = new ArrayList();
 
     public static void huff(Nodo root, String codigo) {
         if (root != null) {
