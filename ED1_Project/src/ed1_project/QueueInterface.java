@@ -10,9 +10,9 @@ package ed1_project;
  * @author HP
  */
 public interface QueueInterface {
-    public boolean Queue(Object data);
-    public Object deQueue(); 
-    public Object Front();
+    public boolean Queue(Arista data);
+    public Arista deQueue(); 
+    public Arista Front();
     public void Clear();
     public boolean isEmpty();
     public void Print();

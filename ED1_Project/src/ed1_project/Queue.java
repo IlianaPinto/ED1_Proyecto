@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ed1_project;
 
-/**
- *
- * @author HP
- */
 public class Queue implements QueueInterface {
 
-    public Object[] array;
+    public Arista[] array;
     public int cap;
     public int size;
     public int s, f;
@@ -22,12 +14,12 @@ public class Queue implements QueueInterface {
     public Queue(int cap) {
         this.cap = cap;
         s = f = 0;
-        array = new Object[cap];
+        array = new Arista[cap];
         size = 0;
     }
 
     @Override
-    public boolean Queue(Object data) {
+    public boolean Queue(Arista data) {
         if (size < cap) {
             array[f] = data;
             f++;
@@ -42,9 +34,9 @@ public class Queue implements QueueInterface {
     }
 
     @Override
-    public Object deQueue() {
+    public Arista deQueue() {
         if (isEmpty() != true) {
-            Object temp = array[s];
+            Arista temp = array[s];
             array[s] = null;
             size--;
             s++;
@@ -58,7 +50,7 @@ public class Queue implements QueueInterface {
     }
 
     @Override
-    public Object Front() {
+    public Arista Front() {
         if (isEmpty()) {
             return null;
         } else {
@@ -68,7 +60,7 @@ public class Queue implements QueueInterface {
 
     @Override
     public void Clear() {
-        array = new Object[cap];
+        array = new Arista[cap];
     }
 
     @Override

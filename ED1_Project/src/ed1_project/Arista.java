@@ -5,12 +5,33 @@ public class Arista {
     private int origen;
     private int destino;
     private int peso;
+    private boolean visit;
+    private boolean recorrido;
+
+    public boolean isVisit() {
+        return visit;
+    }
+
+    public void setVisit(boolean visit) {
+        this.visit = visit;
+    }
 
     public Arista(int origen, int destino, int peso) {
         this.origen = origen;
         this.destino = destino;
         this.peso = peso;
+        visit = false;
+        recorrido = false;
     }
+
+    public boolean isRecorrido() {
+        return recorrido;
+    }
+
+    public void setRecorrido(boolean recorrido) {
+        this.recorrido = recorrido;
+    }
+    
 
     public int getOrigen() {
         return origen;
@@ -34,6 +55,11 @@ public class Arista {
 
     public void setPeso(int peso) {
         this.peso = peso;
+    }
+
+    @Override
+    public String toString() {
+        return "origen = " + origen + ", destino = " + destino + ", peso = "+peso+"] ";
     }
     
     
