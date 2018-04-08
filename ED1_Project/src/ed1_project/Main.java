@@ -114,7 +114,7 @@ public class Main extends javax.swing.JFrame {
         jButton25 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
         dibujo = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        respuesta = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jButton29 = new javax.swing.JButton();
         jButton30 = new javax.swing.JButton();
@@ -134,8 +134,10 @@ public class Main extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         padre_combo = new javax.swing.JComboBox<>();
         jButton34 = new javax.swing.JButton();
+        jButton36 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         arbol = new javax.swing.JTree();
+        jButton35 = new javax.swing.JButton();
 
         jPanel11.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -593,6 +595,8 @@ public class Main extends javax.swing.JFrame {
         text_area1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jScrollPane1.setViewportView(text_area1);
 
+        jButton1.setBackground(new java.awt.Color(0, 102, 102));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton1.setText("Seleccionar Archivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -600,6 +604,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(0, 102, 102));
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton2.setText("Resolver");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -615,10 +621,10 @@ public class Main extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -906,6 +912,8 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Solucion Matematica", jPanel3);
 
+        jButton20.setBackground(new java.awt.Color(0, 102, 102));
+        jButton20.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton20.setText("Seleccionar Archivo");
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -913,6 +921,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton21.setBackground(new java.awt.Color(0, 102, 102));
+        jButton21.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton21.setText("Comprimir Archivo");
         jButton21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -947,13 +957,15 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jButton20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Compresion de Archivos", jPanel4);
 
+        jButton25.setBackground(new java.awt.Color(0, 102, 102));
+        jButton25.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton25.setText("Crear Grafo");
         jButton25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -961,6 +973,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton27.setBackground(new java.awt.Color(0, 102, 102));
+        jButton27.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton27.setText("Calcular Costo Minimo");
         jButton27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -982,6 +996,8 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 269, Short.MAX_VALUE)
         );
 
+        respuesta.setEditable(false);
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -994,7 +1010,7 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton27)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))
+                        .addComponent(respuesta, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(dibujo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -1007,7 +1023,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton25)
                     .addComponent(jButton27)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(dibujo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(76, Short.MAX_VALUE))
@@ -1015,6 +1031,8 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Dijkstra", jPanel6);
 
+        jButton29.setBackground(new java.awt.Color(0, 102, 102));
+        jButton29.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton29.setText("Crear Grafo");
         jButton29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1022,6 +1040,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton30.setBackground(new java.awt.Color(0, 102, 102));
+        jButton30.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton30.setText("Calcular Costo Minimo");
         jButton30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1052,7 +1072,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton30)
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addContainerGap()
@@ -1076,6 +1096,8 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("FLOYD", jPanel7);
 
+        jButton31.setBackground(new java.awt.Color(0, 102, 102));
+        jButton31.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton31.setText("Crear Grafo");
         jButton31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1083,6 +1105,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton32.setBackground(new java.awt.Color(0, 102, 102));
+        jButton32.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton32.setText("Resolver");
         jButton32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1109,11 +1133,11 @@ public class Main extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(35, 35, 35)
                 .addComponent(jButton31)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton32)
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addContainerGap(413, Short.MAX_VALUE))
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
                     .addContainerGap()
@@ -1123,11 +1147,11 @@ public class Main extends javax.swing.JFrame {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton31)
                     .addComponent(jButton32))
-                .addContainerGap(406, Short.MAX_VALUE))
+                .addContainerGap(390, Short.MAX_VALUE))
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
                     .addGap(80, 80, 80)
@@ -1137,6 +1161,8 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Expansion Minima", jPanel8);
 
+        jButton22.setBackground(new java.awt.Color(0, 102, 102));
+        jButton22.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton22.setText("Crear Grafo");
         jButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1144,6 +1170,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton24.setBackground(new java.awt.Color(0, 102, 102));
+        jButton24.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton24.setText("Verificar");
         jButton24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1174,7 +1202,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jButton22)
                 .addGap(18, 18, 18)
                 .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(406, Short.MAX_VALUE))
+                .addContainerGap(398, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addContainerGap()
@@ -1199,8 +1227,9 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane1.addTab("Bicoloreable", jPanel5);
 
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
 
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel10.setText("Nombre");
 
         nombre.addActionListener(new java.awt.event.ActionListener() {
@@ -1209,12 +1238,24 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setText("Padre");
 
+        jButton34.setBackground(new java.awt.Color(0, 102, 102));
+        jButton34.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jButton34.setText("Aceptar");
         jButton34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton34ActionPerformed(evt);
+            }
+        });
+
+        jButton36.setBackground(new java.awt.Color(0, 102, 102));
+        jButton36.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jButton36.setText("Calificar");
+        jButton36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton36ActionPerformed(evt);
             }
         });
 
@@ -1229,10 +1270,10 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton34, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nombre)
-                        .addComponent(padre_combo, 0, 131, Short.MAX_VALUE)))
+                    .addComponent(nombre)
+                    .addComponent(padre_combo, 0, 131, Short.MAX_VALUE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
@@ -1248,21 +1289,37 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(padre_combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton34)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton36)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Jefe");
+        arbol.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         arbol.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane8.setViewportView(arbol);
+
+        jButton35.setText("mostramela");
+        jButton35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton35ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addContainerGap(45, Short.MAX_VALUE)
+                        .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jButton35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61))
         );
@@ -1272,7 +1329,10 @@ public class Main extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(jButton35)))
                 .addContainerGap(104, Short.MAX_VALUE))
         );
 
@@ -2067,6 +2127,7 @@ public class Main extends javax.swing.JFrame {
         while (cantidad <= 0) {
             cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
         }
+        respuesta.setText("");
         Dijnodos = new ArrayList();
         modelo = (DefaultComboBoxModel) origen.getModel();
         modelo.removeAllElements();
@@ -2078,7 +2139,7 @@ public class Main extends javax.swing.JFrame {
         Graphics g = dibujo.getGraphics();
         g.setColor(Color.white);
         g.fillRect(1, 1, 605, 269);
-        g.setColor(Color.PINK);
+        g.setColor(Color.orange);
         int contx = 40, conty = 100;
         int mitad;
         if (cantidad % 2 == 0) {
@@ -2092,7 +2153,7 @@ public class Main extends javax.swing.JFrame {
         for (int i = 0; i < cantidad; i++) {
             cordenadasx.add(contx);
             cordenadasy.add(conty);
-            g.setColor(Color.PINK);
+            g.setColor(Color.ORANGE);
             g.fillOval(contx, conty, 30, 30);
             g.setColor(Color.black);
             g.drawString(i + 1 + "", contx + 13, conty + 17);
@@ -2205,59 +2266,78 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
         try {
+            respuesta.setText("");
             int origin = Integer.parseInt(JOptionPane.showInputDialog(this, "Cual es el origen?"));
             while (origin > Dijnodos.size() || origin <= 0) {
                 origin = Integer.parseInt(JOptionPane.showInputDialog(this, "Cual es el origen?"));
             }
-            Dijnodos.get(origin - 1).setVisitado(true);
-            int[] arreglo = new int[Dijnodos.size()];
-            for (int i = 0; i < arreglo.length; i++) {
-                arreglo[i] = 500000;
-            }
-            arreglo[origin - 1] = 0;
-
-            for (int i = 0; i < Dijnodos.get(origin - 1).getArista().size(); i++) {
-                int weigth = Dijnodos.get(origin - 1).getArista().get(i).getPeso(), destiny = Dijnodos.get(origin - 1).getArista().get(i).getDestino();
-                arreglo[destiny - 1] = weigth;
-            }
-
-            boolean controlar = true;
-            for (int i = 0; i < Dijnodos.size(); i++) {
-                if (!Dijnodos.get(i).isVisitado()) {
-                    controlar = false;
+            if (Dijnodos.get(origin - 1).getArista().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No se puede seleccionar ese origen");
+            } else {
+                Dijnodos.get(origin - 1).setVisitado(true);
+                int[] arreglo = new int[Dijnodos.size()];
+                for (int i = 0; i < arreglo.length; i++) {
+                    arreglo[i] = 500000;
                 }
-            }
-            System.out.println(Arrays.toString(arreglo));
-            while (!controlar) {
-                int menor = 100, posicion = 0;
-                for (int i = 0; i < Dijnodos.size(); i++) {
-                    if ((menor > arreglo[i]) && (arreglo[i] != 0) && (!Dijnodos.get(i).isVisitado())) {
-                        menor = arreglo[i];
-                        posicion = i;
-                    }
-                }
-                Dijnodos.get(posicion).setVisitado(true);
-                int[] temp = arreglo;
-                int acumulado = arreglo[posicion];
-                for (int i = 0; i < Dijnodos.get(posicion).getArista().size(); i++) {
-                    int weigth = Dijnodos.get(posicion).getArista().get(i).getPeso();
-                    int destiny = Dijnodos.get(posicion).getArista().get(i).getDestino();
-                    if (arreglo[destiny - 1] != 0 && weigth < 500000) {
-                        if (arreglo[destiny - 1] < weigth + acumulado) {
+                arreglo[origin - 1] = 0;
 
-                        } else {
-                            arreglo[destiny - 1] = weigth + acumulado;
-                        }
-                    }
+                for (int i = 0; i < Dijnodos.get(origin - 1).getArista().size(); i++) {
+                    int weigth = Dijnodos.get(origin - 1).getArista().get(i).getPeso(), destiny = Dijnodos.get(origin - 1).getArista().get(i).getDestino();
+                    arreglo[destiny - 1] = weigth;
                 }
-                controlar = true;
+
+                boolean controlar = true;
                 for (int i = 0; i < Dijnodos.size(); i++) {
                     if (!Dijnodos.get(i).isVisitado()) {
                         controlar = false;
                     }
                 }
+
+                while (!controlar) {
+                    int menor = 100, posicion = 0;
+                    for (int i = 0; i < Dijnodos.size(); i++) {
+                        if ((menor > arreglo[i]) && (arreglo[i] != 0) && (!Dijnodos.get(i).isVisitado())) {
+                            menor = arreglo[i];
+                            posicion = i;
+                        }
+                    }
+                    Dijnodos.get(posicion).setVisitado(true);
+                    if (Dijnodos.get(posicion).getArista().isEmpty()) {
+                        controlar = true;
+                    } else {
+                        int[] temp = arreglo;
+                        int acumulado = arreglo[posicion];
+                        for (int i = 0; i < Dijnodos.get(posicion).getArista().size(); i++) {
+                            int weigth = Dijnodos.get(posicion).getArista().get(i).getPeso();
+                            int destiny = Dijnodos.get(posicion).getArista().get(i).getDestino();
+                            if (arreglo[destiny - 1] != 0 && weigth < 500000) {
+                                if (arreglo[destiny - 1] < weigth + acumulado) {
+
+                                } else {
+                                    arreglo[destiny - 1] = weigth + acumulado;
+                                }
+                            }
+                        }
+                        controlar = true;
+                        for (int i = 0; i < Dijnodos.size(); i++) {
+                            if (!Dijnodos.get(i).isVisitado()) {
+                                controlar = false;
+                            }
+                        }
+                    }
+
+                }
+                System.out.println(Arrays.toString(arreglo));
+                String costo = "";
+                for (int i = 0; i < arreglo.length; i++) {
+                    if (arreglo[i] == 500000) {
+                        costo += "x, ";
+                    } else {
+                        costo += arreglo[i] + ", ";
+                    }
+                }
+                respuesta.setText(costo);
             }
-            System.out.println(Arrays.toString(arreglo));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2623,10 +2703,10 @@ public class Main extends javax.swing.JFrame {
             for (int i = 0; i < arcos.size(); i++) {
                 if (arcos.get(i).getOrigen() != 0) {
                     if (arcos.get(i).isRecorrido() && (arcos.get(i).getOrigen() == tempo.getOrigen() || arcos.get(i).getDestino() == tempo.getOrigen()) && (arcos.get(i).getOrigen() != tempo.getDestino() || arcos.get(i).getDestino() != tempo.getDestino())) {
-                        
+
                     } else {
                         arreglo.add(tempo);
-                        
+
                     }
                 }
             }
@@ -2663,10 +2743,10 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         }
-        arreglo.remove(arreglo.size()-1);
+        arreglo.remove(arreglo.size() - 1);
         int costo = 0;
         for (int i = 0; i < arreglo.size(); i++) {
-            costo+= arreglo.get(i).getPeso();
+            costo += arreglo.get(i).getPeso();
         }
         System.out.println("costo: " + costo);
     }//GEN-LAST:event_jButton32ActionPerformed
@@ -2676,25 +2756,34 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreActionPerformed
 
     private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
-        DefaultTreeModel m = (DefaultTreeModel) arbol.getModel();
 
         String name = nombre.getText();
-        if ("".equals(nombre.getText())) {
-            JOptionPane.showMessageDialog(this, "El nombre esta vacio");
-        } else {
-            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
-            DefaultMutableTreeNode n = new DefaultMutableTreeNode(name);
-            /*if (!"".equals(padre_combo.getSelectedItem()+"")) {
-                DefaultMutableTreeNode n2 = new DefaultMutableTreeNode(padre_combo.getSelectedItem()+"");
-                n.add(n2);
-            }*/
-            raiz.add(n);
-            m.reload();
-            padre_combo.addItem(name);
+        String padre;
+        modeloArbol = (DefaultTreeModel) arbol.getModel();
+        raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+        if (arbolito == null) {
+            arbolito = new Nario(name);
+            DefaultMutableTreeNode n2 = new DefaultMutableTreeNode(name);
+            modeloArbol.setRoot(n2);
+        }else{
+            padre = padre_combo.getSelectedItem()+"";
+            arbolito.Insertar(arbolito.getRoot(), name, padre);
         }
-        nombre.setText("");
-
+        padre_combo.addItem(name);
+        //modeloArbol.setRoot(new DefaultMutableTreeNode("Root"));
+        recorrido(arbolito.getRoot());
+        modeloArbol.reload();
+        nombre.setText("");  
     }//GEN-LAST:event_jButton34ActionPerformed
+
+    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
+        arbolito.imprimir(arbolito.getRoot());
+    }//GEN-LAST:event_jButton35ActionPerformed
+
+    private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
+        arbolito.calificar(arbolito.getRoot());
+        arbolito.promedio(arbolito.getRoot());
+    }//GEN-LAST:event_jButton36ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2775,6 +2864,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
+    private javax.swing.JButton jButton35;
+    private javax.swing.JButton jButton36;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -2817,12 +2908,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField nombre;
     private javax.swing.JComboBox<String> origen;
     private javax.swing.JComboBox<String> origen1;
     private javax.swing.JComboBox<String> origen2;
     private javax.swing.JComboBox<String> padre_combo;
+    private javax.swing.JTextField respuesta;
     private javax.swing.JSpinner spinner;
     private javax.swing.JSpinner spinner1;
     private javax.swing.JSpinner spinner2;
@@ -2846,7 +2937,23 @@ public class Main extends javax.swing.JFrame {
     ArrayList<Integer> cordenadasx = new ArrayList();
     ArrayList<Integer> cordenadasy = new ArrayList();
     ArrayList<NodoDij> minimo;
-
+    Nario arbolito;
+    DefaultTreeModel modeloArbol;
+    DefaultMutableTreeNode raiz;
+    DefaultMutableTreeNode conjunto;
+    DefaultMutableTreeNode conjunto2;
+    
+    public void recorrido(NodoNario node){
+        conjunto = new DefaultMutableTreeNode(node.getDato());
+        for (int i = 0; i < node.getHijos().size(); i++) {
+             conjunto2 = new DefaultMutableTreeNode(node.getHijos().get(i).getDato());
+             conjunto.add(conjunto2);
+             if (i == node.getHijos().size()-1) {
+                raiz.add(conjunto);
+            }
+        }
+    }
+    
     public static void huff(Nodo root, String codigo) {
         if (root != null) {
             Caracter c = root.getData();

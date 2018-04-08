@@ -11,9 +11,7 @@ public class StackEx implements StackExpansionInter{
         array = new NodoDij[cap];
         size = 0;
     }
-    
-    
-    
+ 
     @Override
     public void clear() {
         array = new NodoDij[cap];
