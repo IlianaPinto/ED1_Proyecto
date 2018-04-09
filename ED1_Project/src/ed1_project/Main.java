@@ -141,6 +141,7 @@ public class Main extends javax.swing.JFrame {
         arbol = new javax.swing.JTree();
         jScrollPane10 = new javax.swing.JScrollPane();
         calificaciones = new javax.swing.JTextArea();
+        jButton35 = new javax.swing.JButton();
 
         jPanel11.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -1066,6 +1067,7 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 269, Short.MAX_VALUE)
         );
 
+        floyd_area.setEditable(false);
         floyd_area.setColumns(20);
         floyd_area.setRows(5);
         jScrollPane9.setViewportView(floyd_area);
@@ -1131,11 +1133,11 @@ public class Main extends javax.swing.JFrame {
         dibujo3.setLayout(dibujo3Layout);
         dibujo3Layout.setHorizontalGroup(
             dibujo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 606, Short.MAX_VALUE)
         );
         dibujo3Layout.setVerticalGroup(
             dibujo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 269, Short.MAX_VALUE)
+            .addGap(0, 268, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -1166,7 +1168,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createSequentialGroup()
                     .addGap(80, 80, 80)
                     .addComponent(dibujo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(97, Short.MAX_VALUE)))
+                    .addContainerGap(98, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Expansion Minima", jPanel8);
@@ -1315,17 +1317,29 @@ public class Main extends javax.swing.JFrame {
         calificaciones.setRows(5);
         jScrollPane10.setViewportView(calificaciones);
 
+        jButton35.setBackground(new java.awt.Color(0, 102, 102));
+        jButton35.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jButton35.setText("Limpiar");
+        jButton35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton35ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton35)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(61, 61, 61))
         );
         jPanel9Layout.setVerticalGroup(
@@ -1338,7 +1352,9 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane10)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton35)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Desempeño", jPanel9);
@@ -1383,6 +1399,7 @@ public class Main extends javax.swing.JFrame {
         text_area1.setText("");
         int size = 0;
         try {
+            //se selecciona un archivo
             JFileChooser jfc = new JFileChooser();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Texto", "txt");
             jfc.setFileFilter(filtro);
@@ -1391,13 +1408,8 @@ public class Main extends javax.swing.JFrame {
                 fichero = jfc.getSelectedFile();
                 fr = new FileReader(fichero);
                 br = new BufferedReader(fr);
-                /*String linea;
-                text_area1.setText("");
-                while ((linea = br.readLine()) != null) {
-                    text_area1.append(linea);
-                    text_area1.append("\n");
-                }*/
                 Scanner sc = null;
+                //leemos de un archivo
                 try {
                     sc = new Scanner(fichero);
                     sc.useDelimiter(",");
@@ -1419,6 +1431,7 @@ public class Main extends javax.swing.JFrame {
                 }
                 sc.close();
             }
+            //mostramos el laberinto en un text area
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
                     text_area1.setForeground(Color.WHITE);
@@ -1428,8 +1441,6 @@ public class Main extends javax.swing.JFrame {
                     } else {
                         text_area1.append(" • ");
                     }
-                    //text_area1.append(" [ " + matriz[i][j] + " ] ");
-
                 }
                 text_area1.append("\n");
             }
@@ -1447,14 +1458,15 @@ public class Main extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             boolean salida = true;
-
             ArrayStack laberinto = new ArrayStack(200);
+            //se agrega las posiciones de inicio
             laberinto.push(new Posicion(0, 0, matriz[0][0] + ""));
             laberinto.push(new Posicion(1, 1, matriz[1][1] + ""));
             laberinto.push(new Posicion(2, 0, matriz[2][0] + ""));
             matriz[1][0] = 8;
             do {
                 int cont = 0;
+                //verificamos si el laberinto tiene salida
                 for (int i = 0; i < matriz.length; i++) {
                     for (int j = 0; j < matriz.length; j++) {
                         if (matriz[i][j] == 0) {
@@ -1469,7 +1481,7 @@ public class Main extends javax.swing.JFrame {
                 if (matriz[laberinto.Top().getPosicioni()][laberinto.Top().getPosicionj()] != 0) {
                     laberinto.Top().setCaracter("8");
                 }
-
+                //verificamos las posiciones y se agrega al stack
                 if (!"0".equals(laberinto.Top().getCaracter())) {
                     laberinto.Pop();
                 } else if (laberinto.Top().getPosicionj() == matriz.length - 1) {
@@ -1498,7 +1510,7 @@ public class Main extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Se ha encontrado la ruta de salida ☺");
             }
-
+            //se muestra el laberinto
             text_area1.setText("");
             for (int i = 0; i < matriz.length; i++) {
                 for (int j = 0; j < matriz.length; j++) {
@@ -1590,6 +1602,7 @@ public class Main extends javax.swing.JFrame {
         String cadena = calcu_text.getText();
         List lista = new List(100);
         try {
+            //se acumula cada numero del string
             String acum = "";
             for (int i = 0; i < cadena.length(); i++) {
                 if (cadena.charAt(i) == '*' || cadena.charAt(i) == '/' || cadena.charAt(i) == '-' || cadena.charAt(i) == '+') {
@@ -1764,6 +1777,7 @@ public class Main extends javax.swing.JFrame {
         text_huffman.setText("");
         Scanner sc = null;
         try {
+            //se muestra los archivos txt disponibles
             JFileChooser jfc = new JFileChooser();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Texto", "txt");
             jfc.setFileFilter(filtro);
@@ -1793,7 +1807,7 @@ public class Main extends javax.swing.JFrame {
             for (int i = 0; i < texto.length(); i++) {
                 l.add(texto.charAt(i));
             }
-
+            //se cuenta las letras
             for (int i = 0; i < l.size(); i++) {
                 int cont = 1;
                 for (int j = i + 1; j < l.size(); j++) {
@@ -1812,16 +1826,17 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             }
-
+            //agregamos a una lista los arboles
             List arboles = new List(200);
             for (int i = 0; i < lista.length; i++) {
                 Nodo root = new Nodo(((Caracter) lista.get(i)));
                 Arbol arbol = new Arbol(root);
                 arboles.insert(arbol);
             }
-
+            //se resuelve el algoritmo de huffman
             boolean salir = true;
             do {
+                //se orenan los arboles de menor a mayor frecuencia
                 for (int i = 0; i < arboles.length; i++) {
                     Arbol arb1 = ((Arbol) arboles.get(i));
                     Nodo nodo1 = (arb1.getRaiz());
@@ -1843,6 +1858,7 @@ public class Main extends javax.swing.JFrame {
                 if (arboles.length == 1) {
                     salir = false;
                 } else {
+                    //se crea un nuevo arbol de las dos letras con menor frecuencia
                     Arbol arbol1 = ((Arbol) arboles.get(0));
                     Arbol arbol2 = ((Arbol) arboles.get(1));
                     Nodo nodo1 = (arbol1.getRaiz());
@@ -1864,7 +1880,9 @@ public class Main extends javax.swing.JFrame {
             Arbol huffman = ((Arbol) arboles.get(0));
 
             huffman.getRaiz().getData().setCaracter('•');
+            //se recorre el arbol
             huff(huffman.getRaiz(), "2");
+           //se pasa el texto a binario
             String tempo = ((Caracter) codes.get(codes.length - 1)).getCode();
             tempo += "1";
             ((Caracter) codes.get(codes.length - 1)).setCode(tempo);
@@ -1927,6 +1945,7 @@ public class Main extends javax.swing.JFrame {
             if (!GrafoNodos.isEmpty()) {
                 GrafoNodos.clear();
             }
+            //limpiamos moedelo
             modelo = (DefaultComboBoxModel) combo.getModel();
             modelo.removeAllElements();
             int cantidad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de nodos"));
@@ -1937,7 +1956,7 @@ public class Main extends javax.swing.JFrame {
                 GrafoNodos.insert(new NodoBi(i));
                 modelo.addElement(i);
             }
-
+            //se dibuja un grafo
             Graphics g = dibujo2.getGraphics();
             g.setColor(Color.white);
             g.fillRect(1, 1, 605, 269);
@@ -1975,12 +1994,12 @@ public class Main extends javax.swing.JFrame {
                 }
                 cont++;
             }
-
+            //se limpian los modelos
             mode = (DefaultTableModel) tabla.getModel();
             mode.setRowCount(0);
             modelo2 = (DefaultComboBoxModel) combo2.getModel();
             modelo2.removeAllElements();
-
+            //se muestra un ventana
             BiGrafo.pack();
             BiGrafo.setModal(true);
             BiGrafo.setVisible(true);
@@ -2000,6 +2019,7 @@ public class Main extends javax.swing.JFrame {
             boolean verificar = true;
             //modelo2 = (DefaultComboBoxModel) combo2.getModel();
             modelo2.removeAllElements();
+            //agrega los nodos disponibles al combo box
             for (int i = 0; i < GrafoNodos.length; i++) {
                 verificar = true;
                 for (int j = 0; j < ((NodoBi) GrafoNodos.get(i)).getAristas().length; j++) {
@@ -2016,7 +2036,6 @@ public class Main extends javax.swing.JFrame {
             /*e.printStackTrace();
             JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");*/
         }
-
     }//GEN-LAST:event_comboItemStateChanged
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
@@ -2025,6 +2044,7 @@ public class Main extends javax.swing.JFrame {
             int pos2 = Integer.parseInt(combo2.getSelectedItem() + "");
 
             mode.setRowCount(0);
+            //se insertan las aristas a los nodos
             for (int i = 0; i < GrafoNodos.length; i++) {
                 if (((NodoBi) GrafoNodos.get(i)).getNombre() == pos) {
                     ((NodoBi) GrafoNodos.get(i)).getAristas().insert(pos2);
@@ -2034,6 +2054,7 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             String palabra = "";
+            //se muestran en la tabla
             for (int i = 0; i < GrafoNodos.length; i++) {
                 palabra = "";
                 for (int j = 0; j < ((NodoBi) GrafoNodos.get(i)).getAristas().length; j++) {
@@ -2066,6 +2087,7 @@ public class Main extends javax.swing.JFrame {
                 temp.setVisitado(true);
                 for (int i = 0; i < temp.getAristas().length; i++) {
                     int num = (int) h.get(i);
+                    //se verifica si el grafo es bicoloreable
                     if (((NodoBi) GrafoNodos.get(num - 1)).isVisitado()) {
                         if (temp.getColor() == Color.white && ((NodoBi) GrafoNodos.get(num - 1)).getColor() == Color.BLUE) {
                             temp.setColor(Color.red);
@@ -2081,11 +2103,12 @@ public class Main extends javax.swing.JFrame {
                         }
 
                     } else {
+                        //si el nodo no esta visitado se agrega al stack
                         estack.push((NodoBi) GrafoNodos.get(num - 1));
                     }
                 }
             }
-
+            //mostramos graficamente como queda el grafo
             for (int i = 0; i < GrafoNodos.length; i++) {
                 if (((NodoBi) GrafoNodos.get(i)).getColor() == Color.BLUE) {
                     g.setColor(Color.BLUE);
@@ -2185,6 +2208,7 @@ public class Main extends javax.swing.JFrame {
             modelo2.removeAllElements();
             boolean verificar2 = false;
             int cont = 0;
+            //verificar los nodos que estan disponibles para agregarlos al combo box
             for (int i = 0; i < Dijnodos.size(); i++) {
                 verificar = true;
                 verificar2 = false;
@@ -2225,7 +2249,7 @@ public class Main extends javax.swing.JFrame {
             int pos = Integer.parseInt(origen.getSelectedItem() + "");
             int pos2 = Integer.parseInt(destino.getSelectedItem() + "");
             mode.setRowCount(0);
-
+            //se agregan las aristas al grafo
             for (int i = 0; i < Dijnodos.size(); i++) {
                 Arista temp = new Arista(pos, pos2, (int) spinner.getValue());
                 if (Dijnodos.get(i).getNombre() == pos) {
@@ -2233,6 +2257,7 @@ public class Main extends javax.swing.JFrame {
                 }
 
             }
+            //se muestta en la tabla la informacion
             for (int i = 0; i < Dijnodos.size(); i++) {
                 for (int j = 0; j < Dijnodos.get(i).getArista().size(); j++) {
                     Object row[] = {Dijnodos.get(i).getNombre(), Dijnodos.get(i).getArista().get(j).getDestino(), Dijnodos.get(i).getArista().get(j).getPeso()};
@@ -2241,6 +2266,7 @@ public class Main extends javax.swing.JFrame {
             }
             modelo2.removeAllElements();
             //JOptionPane.showMessageDialog(BiGrafo, "Conectado");
+            //se muestra el grafo
             Graphics g = dibujo.getGraphics();
             g.setColor(Color.black);
             g.drawLine(cordenadasx.get(pos - 1) + 10, cordenadasy.get(pos - 1) + 10, cordenadasx.get(pos2 - 1) + 10, cordenadasy.get(pos2 - 1) + 10);
@@ -2270,7 +2296,7 @@ public class Main extends javax.swing.JFrame {
                     arreglo[i] = 500000;
                 }
                 arreglo[origin - 1] = 0;
-
+                
                 for (int i = 0; i < Dijnodos.get(origin - 1).getArista().size(); i++) {
                     int weigth = Dijnodos.get(origin - 1).getArista().get(i).getPeso(), destiny = Dijnodos.get(origin - 1).getArista().get(i).getDestino();
                     arreglo[destiny - 1] = weigth;
@@ -2282,8 +2308,9 @@ public class Main extends javax.swing.JFrame {
                         controlar = false;
                     }
                 }
-
+                //resolvemos el algoritmo de Dijkstra
                 while (!controlar) {
+                    //se busca el menor que no este visitado
                     int menor = 100, posicion = 0;
                     for (int i = 0; i < Dijnodos.size(); i++) {
                         if ((menor > arreglo[i]) && (arreglo[i] != 0) && (!Dijnodos.get(i).isVisitado())) {
@@ -2291,6 +2318,7 @@ public class Main extends javax.swing.JFrame {
                             posicion = i;
                         }
                     }
+                    
                     Dijnodos.get(posicion).setVisitado(true);
                     if (Dijnodos.get(posicion).getArista().isEmpty()) {
                         controlar = true;
@@ -2298,6 +2326,7 @@ public class Main extends javax.swing.JFrame {
                         int[] temp = arreglo;
                         int acumulado = arreglo[posicion];
                         for (int i = 0; i < Dijnodos.get(posicion).getArista().size(); i++) {
+                            //se verifica el peso de las aristas
                             int weigth = Dijnodos.get(posicion).getArista().get(i).getPeso();
                             int destiny = Dijnodos.get(posicion).getArista().get(i).getDestino();
                             if (arreglo[destiny - 1] != 0 && weigth < 500000) {
@@ -2315,10 +2344,10 @@ public class Main extends javax.swing.JFrame {
                             }
                         }
                     }
-
                 }
-                System.out.println(Arrays.toString(arreglo));
+                //System.out.println(Arrays.toString(arreglo));
                 String costo = "";
+                //muestra la respuesta
                 for (int i = 0; i < arreglo.length; i++) {
                     if (arreglo[i] == 500000) {
                         costo += "x, ";
@@ -2341,13 +2370,14 @@ public class Main extends javax.swing.JFrame {
                 int pos = Integer.parseInt(origen1.getSelectedItem() + "");
                 int pos2 = Integer.parseInt(destino1.getSelectedItem() + "");
                 mode.setRowCount(0);
-
+                //se agregan las aristas
                 for (int i = 0; i < flnodos.size(); i++) {
                     Arista temp = new Arista(pos, pos2, (int) spinner1.getValue());
                     if (flnodos.get(i).getNombre() == pos) {
                         flnodos.get(i).getArista().add(temp);
                     }
                 }
+                //se muestra la informacion en la tabla
                 for (int i = 0; i < flnodos.size(); i++) {
                     for (int j = 0; j < flnodos.get(i).getArista().size(); j++) {
                         Object row[] = {flnodos.get(i).getNombre(), flnodos.get(i).getArista().get(j).getDestino(), flnodos.get(i).getArista().get(j).getPeso()};
@@ -2355,6 +2385,7 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
                 modelo2.removeAllElements();
+                //se muestra el grafo
                 Graphics g = dibujo1.getGraphics();
                 g.setColor(Color.black);
                 g.drawLine(cordenadasx.get(pos - 1) + 10, cordenadasy.get(pos - 1) + 10, cordenadasx.get(pos2 - 1) + 10, cordenadasy.get(pos2 - 1) + 10);
@@ -2383,6 +2414,7 @@ public class Main extends javax.swing.JFrame {
                 verificar = true;
                 verificar2 = false;
                 cont++;
+                //se verifican los nodos disponibles y se agregan al combo box
                 for (int j = 0; j < flnodos.get(pos - 1).getArista().size(); j++) {
                     if (cont == pos) {
                         verificar = false;
@@ -2429,7 +2461,7 @@ public class Main extends javax.swing.JFrame {
             flnodos.add(new NodoDij(i + 1));
             modelo.addElement(i + 1);
         }
-
+        //se muestra el grafo
         Graphics g = dibujo1.getGraphics();
         g.setColor(Color.white);
         g.fillRect(1, 1, 605, 269);
@@ -2636,12 +2668,12 @@ public class Main extends javax.swing.JFrame {
             }
             cont++;
         }
-
+        //setiamos el modelo
         mode = (DefaultTableModel) tabla4.getModel();
         mode.setRowCount(0);
         modelo2 = (DefaultComboBoxModel) destino2.getModel();
         modelo2.removeAllElements();
-
+        //mostramos la ventana
         Expansion.pack();
         Expansion.setModal(true);
         Expansion.setVisible(true);
@@ -2669,7 +2701,7 @@ public class Main extends javax.swing.JFrame {
             }
         }
         Arista temp;
-        System.out.println(arcos);
+
         for (int i = 0; i < arcos.size(); i++) {
             for (int j = 1; j < arcos.size() - i; j++) {
                 if (arcos.get(j - 1).getPeso() > arcos.get(j).getPeso()) {
@@ -2685,6 +2717,7 @@ public class Main extends javax.swing.JFrame {
                 cola.Queue(arcos.get(i));
             }
         }
+        //resolvemos el arbol de expansion minima
         ArrayList<Arista> arreglo = new ArrayList();
         while (!cola.isEmpty()) {
             Arista tempo = cola.deQueue();
@@ -2704,28 +2737,6 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
             }
-            /*boolean ciclo = false;
-            int regresar = tempo.getOrigen();
-            int des = tempo.getDestino();
-            StackEx estak = new StackEx(100);
-            estak.push(minimo.get(regresar - 1));
-            while (!estak.isEmpty()) {
-                NodoDij n = estak.Pop();
-                for (int i = 0; i < n.getArista().size(); i++) {
-                    if(n.getArista().get(i).getOrigen() == regresar){
-                        n.getArista().get(i).setRecorrido(true);
-                    }
-                    if (n.getArista().get(i).isRecorrido()) {
-                        estak.push(minimo.get(n.getArista().get(i).getOrigen()-1));
-                    }
-                    if(n.getArista().get(i).getOrigen() == regresar && n.getNombre() != des){
-                        ciclo = true;
-                    }
-                }
-            }
-            if(!ciclo){
-                arreglo.add(tempo);
-            }*/
         }
         for (int i = 0; i < arreglo.size(); i++) {
             Arista temp1 = arreglo.get(i);
@@ -2742,7 +2753,26 @@ public class Main extends javax.swing.JFrame {
         for (int i = 0; i < arreglo.size(); i++) {
             costo += arreglo.get(i).getPeso();
         }
-        System.out.println("costo: " + costo);
+        JOptionPane.showMessageDialog(this, "El costo minimo es de: " + costo);
+        //se muestra el arbol de expansion minima
+        Graphics g = dibujo3.getGraphics();
+        g.setColor(Color.white);
+        g.fillRect(5, 5, 605, 250);
+        for (int i = 0; i < arreglo.size(); i++) {
+            if (arreglo.get(i).getDestino() != 0) {
+                int x1 = cordenadasx.get(arreglo.get(i).getOrigen() - 1);
+                int y1 = cordenadasy.get(arreglo.get(i).getOrigen() - 1);
+                int x2 = cordenadasx.get(arreglo.get(i).getDestino() - 1);
+                int y2 = cordenadasy.get(arreglo.get(i).getDestino() - 1);
+                g.setColor(Color.orange);
+                g.fillOval(x1, y1, 30, 30);
+                g.fillOval(x2, y2, 30, 30);
+                g.setColor(Color.black);
+                g.drawString(arreglo.get(i).getOrigen() + "", x1 + 13, y1 + 17);
+                g.drawString(arreglo.get(i).getDestino() + "", x2 + 13, y2 + 17);
+                g.drawLine(x1 + 10, y1 + 10, x2 + 10, y2 + 10);
+            }
+        }
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
@@ -2760,23 +2790,24 @@ public class Main extends javax.swing.JFrame {
             DefaultMutableTreeNode n2 = new DefaultMutableTreeNode(name);
             modeloArbol.setRoot(n2);
         } else {
+            //se agrega al arbol
             padre = padre_combo.getSelectedItem() + "";
             arbolito.Insertar(arbolito.getRoot(), name, padre);
             boolean verificar = false;
             for (int i = 0; i < raiz.getChildCount(); i++) {
                 if (raiz.getChildAt(i).toString().equals(padre)) {
-                    DefaultMutableTreeNode nodo1 = new DefaultMutableTreeNode(name); 
-                    ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(nodo1);
+                    DefaultMutableTreeNode nodo1 = new DefaultMutableTreeNode(name);
+                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(nodo1);
                     verificar = true;
                 }
             }
             if (!verificar) {
                 DefaultMutableTreeNode p = new DefaultMutableTreeNode(name);
-                DefaultMutableTreeNode n = new DefaultMutableTreeNode (padre);
+                DefaultMutableTreeNode n = new DefaultMutableTreeNode(padre);
                 n.add(p);
                 raiz.add(n);
             }
-            
+
         }
         padre_combo.addItem(name);
         //modeloArbol.setRoot(new DefaultMutableTreeNode("Root"));
@@ -2790,17 +2821,26 @@ public class Main extends javax.swing.JFrame {
         calificaciones.setText("");
         arbolito.promedio(arbolito.getRoot());
         double prom = 0;
+        //se muestra el desempeño
         for (int i = 0; i < arbolito.getRoot().getHijos().size(); i++) {
             prom += arbolito.getRoot().getHijos().get(i).getPorcentaje();
         }
-        double resp = prom/arbolito.getRoot().getHijos().size();
+        double resp = prom / arbolito.getRoot().getHijos().size();
         arbolito.imprimir(arbolito.getRoot());
         String respuestas = arbolito.getResp();
         arbolito.setResp("");
-        calificaciones.append("Nombre: "+arbolito.getRoot().getDato()+ " Porcentaje: "+resp+"\n");
-        System.out.println(respuestas);
+        calificaciones.append("Nombre: " + arbolito.getRoot().getDato() + " Porcentaje: " + resp + "\n");
+        //System.out.println(respuestas);
         calificaciones.append(respuestas);
+        arbolito = null;
     }//GEN-LAST:event_jButton36ActionPerformed
+
+    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
+        calificaciones.setText("");
+        raiz.removeAllChildren();
+        modeloArbol.reload();
+        padre_combo.removeAllItems();
+    }//GEN-LAST:event_jButton35ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2883,6 +2923,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
+    private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
