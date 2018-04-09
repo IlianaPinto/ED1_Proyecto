@@ -39,7 +39,7 @@ public class NodoNario {
 
     @Override
     public String toString() {
-        return "dato=" + dato+ " porcentaje="+porcentaje;
+        return "Nombre: " + dato+ ", Porcentaje: "+porcentaje;
     }
     
     

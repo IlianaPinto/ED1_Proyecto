@@ -7,6 +7,7 @@ public class Nario {
     private NodoNario root;
     private int cont = 0;
     private double acum = 0;
+    private String resp = "";
 
     public Nario(String dato) {
         root = new NodoNario(dato);
@@ -18,6 +19,14 @@ public class Nario {
 
     public void setRoot(NodoNario root) {
         this.root = root;
+    }
+
+    public String getResp() {
+        return resp;
+    }
+
+    public void setResp(String resp) {
+        this.resp = resp;
     }
 
     public void Insertar(NodoNario node, String dato, String papasito) {
@@ -37,7 +46,7 @@ public class Nario {
 
     public void imprimir(NodoNario node) {
         for (int i = 0; i < node.getHijos().size(); i++) {
-            System.out.println(node.getHijos().get(i));
+            resp += (node.getHijos().get(i)+" \n");
             imprimir(node.getHijos().get(i));
         }
     }

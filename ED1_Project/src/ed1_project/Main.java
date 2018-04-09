@@ -119,6 +119,8 @@ public class Main extends javax.swing.JFrame {
         jButton29 = new javax.swing.JButton();
         jButton30 = new javax.swing.JButton();
         dibujo1 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        floyd_area = new javax.swing.JTextArea();
         jPanel8 = new javax.swing.JPanel();
         jButton31 = new javax.swing.JButton();
         jButton32 = new javax.swing.JButton();
@@ -137,7 +139,8 @@ public class Main extends javax.swing.JFrame {
         jButton36 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         arbol = new javax.swing.JTree();
-        jButton35 = new javax.swing.JButton();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        calificaciones = new javax.swing.JTextArea();
 
         jPanel11.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -1063,35 +1066,42 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 269, Short.MAX_VALUE)
         );
 
+        floyd_area.setColumns(20);
+        floyd_area.setRows(5);
+        jScrollPane9.setViewportView(floyd_area);
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton30)
-                .addContainerGap(298, Short.MAX_VALUE))
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(dibujo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(161, 161, 161)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(dibujo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton29)
-                    .addComponent(jButton30))
-                .addContainerGap(395, Short.MAX_VALUE))
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(88, 88, 88)
-                    .addComponent(dibujo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(89, Short.MAX_VALUE)))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jButton29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton30)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(dibujo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("FLOYD", jPanel7);
@@ -1274,7 +1284,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jButton34, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                     .addComponent(nombre)
                     .addComponent(padre_combo, 0, 131, Short.MAX_VALUE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1299,27 +1309,22 @@ public class Main extends javax.swing.JFrame {
         arbol.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane8.setViewportView(arbol);
 
-        jButton35.setText("mostramela");
-        jButton35.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton35ActionPerformed(evt);
-            }
-        });
+        calificaciones.setEditable(false);
+        calificaciones.setColumns(20);
+        calificaciones.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        calificaciones.setRows(5);
+        jScrollPane10.setViewportView(calificaciones);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addContainerGap(45, Short.MAX_VALUE)
-                        .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jButton35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61))
         );
@@ -1327,12 +1332,12 @@ public class Main extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(jButton35)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane10)))
                 .addContainerGap(104, Short.MAX_VALUE))
         );
 
@@ -1860,33 +1865,8 @@ public class Main extends javax.swing.JFrame {
 
             huffman.getRaiz().getData().setCaracter('•');
             huff(huffman.getRaiz(), "2");
-            //text_huffman.setText("");
-            /*for (int i = 0; i < codes.length; i++) {
-                String car = ((Caracter)codes.get(i)).getCode();
-                char ce = ((Caracter)codes.get(i)).getCaracter();
-                text_huffman.append(ce+"_"+car+" ");
-                
-            }*/
-
- /*for (int i = 0; i < arboles.length; i++) {
-                Arbol arb2 = ((Arbol) arboles.get(i));
-                Nodo nodo2 = arb2.getRaiz();
-                Caracter c2 = (nodo2.getData());
-                System.out.print(c2.getCaracter());
-                System.out.print(" "+c2.getNumero());
-                System.out.println();
-            }*/
-
- /*for (int i = 0; i < lista.length; i++) {
-                System.out.print(((Caracter)lista.get(i)).getCaracter());
-                System.out.print(" "+((Caracter)lista.get(i)).getNumero());
-                System.out.println("");
-                
-            }*/
             String tempo = ((Caracter) codes.get(codes.length - 1)).getCode();
-
             tempo += "1";
-
             ((Caracter) codes.get(codes.length - 1)).setCode(tempo);
             String acumulador = "";
             for (int i = 0; i < texto.length(); i++) {
@@ -1908,7 +1888,6 @@ public class Main extends javax.swing.JFrame {
                         }
                         exp--;
                     }
-
                     char letra = (char) (numero);
                     comprimido += letra;
                     cont = 0;
@@ -1918,17 +1897,28 @@ public class Main extends javax.swing.JFrame {
                     cont++;
                 }
                 if (i == acumulador.length() - 1 && !"".equals(acum2)) {
-                    comprimido += acum2;
+                    int number = acum2.length();
+                    for (int j = number; j < 8; j++) {
+                        acum2 += "0";
+                    }
+                    int exp = 7;
+                    int numero = 0;
+                    for (int j = 0; j < acum2.length(); j++) {
+                        if (acum2.charAt(j) == '1') {
+                            numero += Math.pow(2, exp);
+                        }
+                        exp--;
+                    }
+                    char letra = (char) (numero);
+                    comprimido += letra;
+                    cont = 0;
+                    acum2 = "";
                 }
             }
-
             text_huffman.append("\n" + "Texto comprimido: " + comprimido);
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
-
-
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
@@ -2507,7 +2497,6 @@ public class Main extends javax.swing.JFrame {
                 matrix[i][destiny - 1] = weigth;
             }
         }
-        System.out.println(Arrays.deepToString(matrix));
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
                 for (int k = 0; k < matrix.length; k++) {
@@ -2517,7 +2506,12 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         }
-        System.out.println(Arrays.deepToString(matrix));
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                floyd_area.append("[" + matrix[i][j] + "]");
+            }
+            floyd_area.append("\n");
+        }
     }//GEN-LAST:event_jButton30ActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
@@ -2758,31 +2752,54 @@ public class Main extends javax.swing.JFrame {
     private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
 
         String name = nombre.getText();
-        String padre;
+        String padre = "";
         modeloArbol = (DefaultTreeModel) arbol.getModel();
         raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
         if (arbolito == null) {
             arbolito = new Nario(name);
             DefaultMutableTreeNode n2 = new DefaultMutableTreeNode(name);
             modeloArbol.setRoot(n2);
-        }else{
-            padre = padre_combo.getSelectedItem()+"";
+        } else {
+            padre = padre_combo.getSelectedItem() + "";
             arbolito.Insertar(arbolito.getRoot(), name, padre);
+            boolean verificar = false;
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+                if (raiz.getChildAt(i).toString().equals(padre)) {
+                    DefaultMutableTreeNode nodo1 = new DefaultMutableTreeNode(name); 
+                    ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(nodo1);
+                    verificar = true;
+                }
+            }
+            if (!verificar) {
+                DefaultMutableTreeNode p = new DefaultMutableTreeNode(name);
+                DefaultMutableTreeNode n = new DefaultMutableTreeNode (padre);
+                n.add(p);
+                raiz.add(n);
+            }
+            
         }
         padre_combo.addItem(name);
         //modeloArbol.setRoot(new DefaultMutableTreeNode("Root"));
-        recorrido(arbolito.getRoot());
-        modeloArbol.reload();
-        nombre.setText("");  
-    }//GEN-LAST:event_jButton34ActionPerformed
 
-    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
-        arbolito.imprimir(arbolito.getRoot());
-    }//GEN-LAST:event_jButton35ActionPerformed
+        modeloArbol.reload();
+        nombre.setText("");
+    }//GEN-LAST:event_jButton34ActionPerformed
 
     private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
         arbolito.calificar(arbolito.getRoot());
+        calificaciones.setText("");
         arbolito.promedio(arbolito.getRoot());
+        double prom = 0;
+        for (int i = 0; i < arbolito.getRoot().getHijos().size(); i++) {
+            prom += arbolito.getRoot().getHijos().get(i).getPorcentaje();
+        }
+        double resp = prom/arbolito.getRoot().getHijos().size();
+        arbolito.imprimir(arbolito.getRoot());
+        String respuestas = arbolito.getResp();
+        arbolito.setResp("");
+        calificaciones.append("Nombre: "+arbolito.getRoot().getDato()+ " Porcentaje: "+resp+"\n");
+        System.out.println(respuestas);
+        calificaciones.append(respuestas);
     }//GEN-LAST:event_jButton36ActionPerformed
 
     /**
@@ -2827,6 +2844,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JDialog FloGrafo;
     private javax.swing.JTree arbol;
     private javax.swing.JTextArea calcu_text;
+    private javax.swing.JTextArea calificaciones;
     private javax.swing.JComboBox<String> combo;
     private javax.swing.JComboBox<String> combo2;
     private javax.swing.JComboBox<String> destino;
@@ -2836,6 +2854,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel dibujo1;
     private javax.swing.JPanel dibujo2;
     private javax.swing.JPanel dibujo3;
+    private javax.swing.JTextArea floyd_area;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -2864,7 +2883,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
-    private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2899,6 +2917,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2906,6 +2925,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField nombre;
@@ -2942,18 +2962,7 @@ public class Main extends javax.swing.JFrame {
     DefaultMutableTreeNode raiz;
     DefaultMutableTreeNode conjunto;
     DefaultMutableTreeNode conjunto2;
-    
-    public void recorrido(NodoNario node){
-        conjunto = new DefaultMutableTreeNode(node.getDato());
-        for (int i = 0; i < node.getHijos().size(); i++) {
-             conjunto2 = new DefaultMutableTreeNode(node.getHijos().get(i).getDato());
-             conjunto.add(conjunto2);
-             if (i == node.getHijos().size()-1) {
-                raiz.add(conjunto);
-            }
-        }
-    }
-    
+
     public static void huff(Nodo root, String codigo) {
         if (root != null) {
             Caracter c = root.getData();
