@@ -2298,8 +2298,8 @@ public class Main extends javax.swing.JFrame {
             midy = (cordenadasy.get(pos - 1) + 10 + cordenadasy.get(pos2 - 1) + 10) / 2;
             g.drawString(spinner.getValue() + "", midx, midy);
         } catch (Exception e) {
-            e.printStackTrace();
-            // JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");
+            //e.printStackTrace();
+            JOptionPane.showMessageDialog(BiGrafo, "Ocurrio un error");
         }
     }//GEN-LAST:event_jButton26ActionPerformed
 
@@ -2381,7 +2381,8 @@ public class Main extends javax.swing.JFrame {
                 respuesta.setText(costo);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Ocurrio un error");
+            //e.printStackTrace();
         }
     }//GEN-LAST:event_jButton27ActionPerformed
 
@@ -2535,37 +2536,48 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
-        int[][] matrix = new int[flnodos.size()][flnodos.size()];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                matrix[i][j] = 500000;
-                if (i == j) {
-                    matrix[i][j] = 0;
-                }
-            }
-        }
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < flnodos.get(i).getArista().size(); j++) {
-                int destiny = flnodos.get(i).getArista().get(j).getDestino();
-                int weigth = flnodos.get(i).getArista().get(j).getPeso();
-                matrix[i][destiny - 1] = weigth;
-            }
-        }
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                for (int k = 0; k < matrix.length; k++) {
-                    if (matrix[j][i] + matrix[i][k] < matrix[j][k]) {
-                        matrix[j][k] = matrix[j][i] + matrix[i][k];
+        try {
+            int[][] matrix = new int[flnodos.size()][flnodos.size()];
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix.length; j++) {
+                    matrix[i][j] = 500000;
+                    if (i == j) {
+                        matrix[i][j] = 0;
                     }
                 }
             }
-        }
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                floyd_area.append("[" + matrix[i][j] + "]");
+
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < flnodos.get(i).getArista().size(); j++) {
+                    int destiny = flnodos.get(i).getArista().get(j).getDestino();
+                    int weigth = flnodos.get(i).getArista().get(j).getPeso();
+                    matrix[i][destiny - 1] = weigth;
+                }
             }
-            floyd_area.append("\n");
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix.length; j++) {
+                    for (int k = 0; k < matrix.length; k++) {
+                        if (matrix[j][i] + matrix[i][k] < matrix[j][k]) {
+                            matrix[j][k] = matrix[j][i] + matrix[i][k];
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix.length; j++) {
+                    if (matrix[i][j] == 500000) {
+                        floyd_area.append("[x]");
+                    } else {
+                        floyd_area.append("[" + matrix[i][j] + "]");
+                    }
+
+                }
+                floyd_area.append("\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
     }//GEN-LAST:event_jButton30ActionPerformed
 
@@ -2604,7 +2616,7 @@ public class Main extends javax.swing.JFrame {
             midy = (cordenadasy.get(pos - 1) + 10 + cordenadasy.get(pos2 - 1) + 10) / 2;
             g.drawString(spinner2.getValue() + "", midx, midy);
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             JOptionPane.showMessageDialog(Expansion, "Ocurrio un error");
         }
     }//GEN-LAST:event_jButton33ActionPerformed
@@ -2704,107 +2716,112 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
-        ArrayList<Arista> arcos = new ArrayList();
-        for (int i = 0; i < minimo.size(); i++) {
-            for (int j = 0; j < minimo.get(i).getArista().size(); j++) {
-                if (!minimo.get(i).getArista().get(j).isVisit()) {
-                    arcos.add(minimo.get(i).getArista().get(j));
-                    minimo.get(i).getArista().get(j).setVisit(true);
-                }
-            }
-        }
-        for (int i = 0; i < arcos.size(); i++) {
-            Arista temp = arcos.get(i);
-            for (int j = i + 1; j < arcos.size(); j++) {
-                Arista temp2 = arcos.get(j);
-                if (temp.getOrigen() == temp2.getDestino() && temp2.getOrigen() == temp.getDestino()) {
-                    Arista resp = new Arista(0, 0, 0);
-                    arcos.set(j, resp);
-                }
-            }
-        }
-        Arista temp;
-        //se arregla el arreglo de menor a mayor
-        for (int i = 0; i < arcos.size(); i++) {
-            for (int j = 1; j < arcos.size() - i; j++) {
-                if (arcos.get(j - 1).getPeso() > arcos.get(j).getPeso()) {
-                    temp = arcos.get(j - 1);
-                    arcos.set(j - 1, arcos.get(j));
-                    arcos.set(j, temp);
-                }
-            }
-        }
-        Queue cola = new Queue(200);
-        for (int i = 0; i < arcos.size(); i++) {
-            if (arcos.get(i).getDestino() != 0) {
-                cola.Queue(arcos.get(i));
-            }
-        }
-        //resolvemos el arbol de expansion minima
-        ArrayList<Arista> arreglo = new ArrayList();
-        while (!cola.isEmpty()) {
-            Arista tempo = cola.deQueue();
 
-            for (int i = 0; i < arcos.size(); i++) {
-                if (tempo.getOrigen() == arcos.get(i).getOrigen() && tempo.getDestino() == arcos.get(i).getDestino()) {
-                    arcos.get(i).setRecorrido(true);
-                }
-            }
-            for (int i = 0; i < arcos.size(); i++) {
-                if (arcos.get(i).getOrigen() != 0) {
-                    if (arcos.get(i).isRecorrido() && (arcos.get(i).getOrigen() == tempo.getOrigen() || arcos.get(i).getDestino() == tempo.getOrigen()) && (arcos.get(i).getOrigen() != tempo.getDestino() || arcos.get(i).getDestino() != tempo.getDestino())) {
-
-                    } else {
-                        arreglo.add(tempo);
-
+        try {
+            ArrayList<Arista> arcos = new ArrayList();
+            for (int i = 0; i < minimo.size(); i++) {
+                for (int j = 0; j < minimo.get(i).getArista().size(); j++) {
+                    if (!minimo.get(i).getArista().get(j).isVisit()) {
+                        arcos.add(minimo.get(i).getArista().get(j));
+                        minimo.get(i).getArista().get(j).setVisit(true);
                     }
                 }
             }
-        }
-        for (int i = 0; i < arreglo.size(); i++) {
-            Arista temp1 = arreglo.get(i);
-            for (int j = i + 1; j < arreglo.size(); j++) {
-                Arista temp2 = arreglo.get(j);
-                if (temp1.getOrigen() == temp2.getOrigen() && temp2.getDestino() == temp1.getDestino()) {
-                    Arista resp = new Arista(0, 0, 0);
-                    arreglo.set(j, resp);
+            for (int i = 0; i < arcos.size(); i++) {
+                Arista temp = arcos.get(i);
+                for (int j = i + 1; j < arcos.size(); j++) {
+                    Arista temp2 = arcos.get(j);
+                    if (temp.getOrigen() == temp2.getDestino() && temp2.getOrigen() == temp.getDestino()) {
+                        Arista resp = new Arista(0, 0, 0);
+                        arcos.set(j, resp);
+                    }
                 }
             }
-        }
-        //arreglo.remove(arreglo.size() - 1);
-        int optimo = minimo.size() - 1;
-        int cont = 0, cont2 = 0;
-        int costo = 0;
-        for (int i = 0; i < arreglo.size(); i++) {
-            if (cont == optimo) {
-                break;
+            Arista temp;
+            //se arregla el arreglo de menor a mayor
+            for (int i = 0; i < arcos.size(); i++) {
+                for (int j = 1; j < arcos.size() - i; j++) {
+                    if (arcos.get(j - 1).getPeso() > arcos.get(j).getPeso()) {
+                        temp = arcos.get(j - 1);
+                        arcos.set(j - 1, arcos.get(j));
+                        arcos.set(j, temp);
+                    }
+                }
             }
-            if (arreglo.get(i).getPeso() != 0) {
-                cont++;
-                costo += arreglo.get(i).getPeso();
+            Queue cola = new Queue(200);
+            for (int i = 0; i < arcos.size(); i++) {
+                if (arcos.get(i).getDestino() != 0) {
+                    cola.Queue(arcos.get(i));
+                }
             }
-            cont2++;
-        }
-        JOptionPane.showMessageDialog(this, "El costo minimo es de: " + costo);
-        //se muestra el arbol de expansion minima
-        Graphics g = dibujo3.getGraphics();
-        g.setColor(Color.white);
-        g.fillRect(5, 5, 605, 250);
-        for (int i = 0; i < cont2; i++) {
-            if (arreglo.get(i).getDestino() != 0) {
-                int x1 = cordenadasx.get(arreglo.get(i).getOrigen() - 1);
-                int y1 = cordenadasy.get(arreglo.get(i).getOrigen() - 1);
-                int x2 = cordenadasx.get(arreglo.get(i).getDestino() - 1);
-                int y2 = cordenadasy.get(arreglo.get(i).getDestino() - 1);
-                g.setColor(Color.black);
-                g.drawLine(x1 + 10, y1 + 10, x2 + 10, y2 + 10);
-                g.setColor(Color.orange);
-                g.fillOval(x1, y1, 30, 30);
-                g.fillOval(x2, y2, 30, 30);
-                g.setColor(Color.black);
-                g.drawString(arreglo.get(i).getOrigen() + "", x1 + 13, y1 + 17);
-                g.drawString(arreglo.get(i).getDestino() + "", x2 + 13, y2 + 17);
+            //resolvemos el arbol de expansion minima
+            ArrayList<Arista> arreglo = new ArrayList();
+            while (!cola.isEmpty()) {
+                Arista tempo = cola.deQueue();
+
+                for (int i = 0; i < arcos.size(); i++) {
+                    if (tempo.getOrigen() == arcos.get(i).getOrigen() && tempo.getDestino() == arcos.get(i).getDestino()) {
+                        arcos.get(i).setRecorrido(true);
+                    }
+                }
+                for (int i = 0; i < arcos.size(); i++) {
+                    if (arcos.get(i).getOrigen() != 0) {
+                        if (arcos.get(i).isRecorrido() && (arcos.get(i).getOrigen() == tempo.getOrigen() || arcos.get(i).getDestino() == tempo.getOrigen()) && (arcos.get(i).getOrigen() != tempo.getDestino() || arcos.get(i).getDestino() != tempo.getDestino())) {
+
+                        } else {
+                            arreglo.add(tempo);
+
+                        }
+                    }
+                }
             }
+            for (int i = 0; i < arreglo.size(); i++) {
+                Arista temp1 = arreglo.get(i);
+                for (int j = i + 1; j < arreglo.size(); j++) {
+                    Arista temp2 = arreglo.get(j);
+                    if (temp1.getOrigen() == temp2.getOrigen() && temp2.getDestino() == temp1.getDestino()) {
+                        Arista resp = new Arista(0, 0, 0);
+                        arreglo.set(j, resp);
+                    }
+                }
+            }
+            //arreglo.remove(arreglo.size() - 1);
+            int optimo = minimo.size() - 1;
+            int cont = 0, cont2 = 0;
+            int costo = 0;
+            for (int i = 0; i < arreglo.size(); i++) {
+                if (cont == optimo) {
+                    break;
+                }
+                if (arreglo.get(i).getPeso() != 0) {
+                    cont++;
+                    costo += arreglo.get(i).getPeso();
+                }
+                cont2++;
+            }
+            JOptionPane.showMessageDialog(this, "El costo minimo es de: " + costo);
+            //se muestra el arbol de expansion minima
+            Graphics g = dibujo3.getGraphics();
+            g.setColor(Color.white);
+            g.fillRect(5, 5, 605, 250);
+            for (int i = 0; i < cont2; i++) {
+                if (arreglo.get(i).getDestino() != 0) {
+                    int x1 = cordenadasx.get(arreglo.get(i).getOrigen() - 1);
+                    int y1 = cordenadasy.get(arreglo.get(i).getOrigen() - 1);
+                    int x2 = cordenadasx.get(arreglo.get(i).getDestino() - 1);
+                    int y2 = cordenadasy.get(arreglo.get(i).getDestino() - 1);
+                    g.setColor(Color.black);
+                    g.drawLine(x1 + 10, y1 + 10, x2 + 10, y2 + 10);
+                    g.setColor(Color.orange);
+                    g.fillOval(x1, y1, 30, 30);
+                    g.fillOval(x2, y2, 30, 30);
+                    g.setColor(Color.black);
+                    g.drawString(arreglo.get(i).getOrigen() + "", x1 + 13, y1 + 17);
+                    g.drawString(arreglo.get(i).getDestino() + "", x2 + 13, y2 + 17);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
     }//GEN-LAST:event_jButton32ActionPerformed
 
@@ -2816,63 +2833,77 @@ public class Main extends javax.swing.JFrame {
 
         String name = nombre.getText();
         String padre = "";
-        modeloArbol = (DefaultTreeModel) arbol.getModel();
-        raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
-        if (arbolito == null) {
-            arbolito = new Nario(name);
-            DefaultMutableTreeNode n2 = new DefaultMutableTreeNode(name);
-            modeloArbol.setRoot(n2);
+        if ("".equals(name)) {
+            JOptionPane.showMessageDialog(this, "El nombre esta vacio");
         } else {
-            //se agrega al arbol
-            padre = padre_combo.getSelectedItem() + "";
-            arbolito.Insertar(arbolito.getRoot(), name, padre);
-            boolean verificar = false;
-            for (int i = 0; i < raiz.getChildCount(); i++) {
-                if (raiz.getChildAt(i).toString().equals(padre)) {
-                    DefaultMutableTreeNode nodo1 = new DefaultMutableTreeNode(name);
-                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(nodo1);
-                    verificar = true;
+            modeloArbol = (DefaultTreeModel) arbol.getModel();
+            raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+            if (arbolito == null) {
+                arbolito = new Nario(name);
+                DefaultMutableTreeNode n2 = new DefaultMutableTreeNode(name);
+                modeloArbol.setRoot(n2);
+            } else {
+                //se agrega al arbol
+                padre = padre_combo.getSelectedItem() + "";
+                arbolito.Insertar(arbolito.getRoot(), name, padre);
+                boolean verificar = false;
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(padre)) {
+                        DefaultMutableTreeNode nodo1 = new DefaultMutableTreeNode(name);
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(nodo1);
+                        verificar = true;
+                    }
                 }
-            }
-            if (!verificar) {
-                DefaultMutableTreeNode p = new DefaultMutableTreeNode(name);
-                DefaultMutableTreeNode n = new DefaultMutableTreeNode(padre);
-                n.add(p);
-                raiz.add(n);
-            }
+                if (!verificar) {
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(name);
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(padre);
+                    n.add(p);
+                    raiz.add(n);
+                }
 
+            }
+            padre_combo.addItem(name);
+            //modeloArbol.setRoot(new DefaultMutableTreeNode("Root"));
+            modeloArbol.reload();
+            nombre.setText("");
         }
-        padre_combo.addItem(name);
-        //modeloArbol.setRoot(new DefaultMutableTreeNode("Root"));
 
-        modeloArbol.reload();
-        nombre.setText("");
     }//GEN-LAST:event_jButton34ActionPerformed
 
     private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
-        arbolito.calificar(arbolito.getRoot());
-        calificaciones.setText("");
-        arbolito.promedio(arbolito.getRoot());
-        double prom = 0;
-        //se muestra el desempeño
-        for (int i = 0; i < arbolito.getRoot().getHijos().size(); i++) {
-            prom += arbolito.getRoot().getHijos().get(i).getPorcentaje();
+
+        try {
+            arbolito.calificar(arbolito.getRoot());
+            calificaciones.setText("");
+            arbolito.promedio(arbolito.getRoot());
+            double prom = 0;
+            //se muestra el desempeño
+            for (int i = 0; i < arbolito.getRoot().getHijos().size(); i++) {
+                prom += arbolito.getRoot().getHijos().get(i).getPorcentaje();
+            }
+            double resp = prom / arbolito.getRoot().getHijos().size();
+            arbolito.imprimir(arbolito.getRoot());
+            String respuestas = arbolito.getResp();
+            arbolito.setResp("");
+            calificaciones.append("Nombre: " + arbolito.getRoot().getDato() + " Porcentaje: " + resp + "\n");
+            //System.out.println(respuestas);
+            calificaciones.append(respuestas);
+            arbolito = null;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
-        double resp = prom / arbolito.getRoot().getHijos().size();
-        arbolito.imprimir(arbolito.getRoot());
-        String respuestas = arbolito.getResp();
-        arbolito.setResp("");
-        calificaciones.append("Nombre: " + arbolito.getRoot().getDato() + " Porcentaje: " + resp + "\n");
-        //System.out.println(respuestas);
-        calificaciones.append(respuestas);
-        arbolito = null;
     }//GEN-LAST:event_jButton36ActionPerformed
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
-        calificaciones.setText("");
-        raiz.removeAllChildren();
-        modeloArbol.reload();
-        padre_combo.removeAllItems();
+
+        try {
+            calificaciones.setText("");
+            raiz.removeAllChildren();
+            modeloArbol.reload();
+            padre_combo.removeAllItems();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error");
+        }
     }//GEN-LAST:event_jButton35ActionPerformed
 
     /**
