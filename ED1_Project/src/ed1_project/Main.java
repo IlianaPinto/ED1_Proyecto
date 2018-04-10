@@ -2701,7 +2701,7 @@ public class Main extends javax.swing.JFrame {
             }
         }
         Arista temp;
-
+        //se arregla el arreglo de menor a mayor
         for (int i = 0; i < arcos.size(); i++) {
             for (int j = 1; j < arcos.size() - i; j++) {
                 if (arcos.get(j - 1).getPeso() > arcos.get(j).getPeso()) {
@@ -2748,29 +2748,39 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         }
-        arreglo.remove(arreglo.size() - 1);
+        //arreglo.remove(arreglo.size() - 1);
+        int optimo = minimo.size()-1;
+        int cont = 0, cont2 = 0;
         int costo = 0;
         for (int i = 0; i < arreglo.size(); i++) {
-            costo += arreglo.get(i).getPeso();
-        }
+            if (cont == optimo) {
+                break;
+            }  
+            if (arreglo.get(i).getPeso() != 0) {
+                cont++;
+                costo += arreglo.get(i).getPeso();
+            }
+            cont2++;
+        }      
         JOptionPane.showMessageDialog(this, "El costo minimo es de: " + costo);
         //se muestra el arbol de expansion minima
         Graphics g = dibujo3.getGraphics();
         g.setColor(Color.white);
         g.fillRect(5, 5, 605, 250);
-        for (int i = 0; i < arreglo.size(); i++) {
+        for (int i = 0; i < cont2; i++) {
             if (arreglo.get(i).getDestino() != 0) {
                 int x1 = cordenadasx.get(arreglo.get(i).getOrigen() - 1);
                 int y1 = cordenadasy.get(arreglo.get(i).getOrigen() - 1);
                 int x2 = cordenadasx.get(arreglo.get(i).getDestino() - 1);
                 int y2 = cordenadasy.get(arreglo.get(i).getDestino() - 1);
+                g.setColor(Color.black);
+                g.drawLine(x1 + 10, y1 + 10, x2 + 10, y2 + 10);
                 g.setColor(Color.orange);
                 g.fillOval(x1, y1, 30, 30);
                 g.fillOval(x2, y2, 30, 30);
                 g.setColor(Color.black);
                 g.drawString(arreglo.get(i).getOrigen() + "", x1 + 13, y1 + 17);
                 g.drawString(arreglo.get(i).getDestino() + "", x2 + 13, y2 + 17);
-                g.drawLine(x1 + 10, y1 + 10, x2 + 10, y2 + 10);
             }
         }
     }//GEN-LAST:event_jButton32ActionPerformed
