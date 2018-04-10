@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.HeadlessException;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1797,6 +1799,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        String comprimido = "";
         try {
             //text_huffman.setText("");
             List lista = new List(200);
@@ -1882,7 +1885,7 @@ public class Main extends javax.swing.JFrame {
             huffman.getRaiz().getData().setCaracter('•');
             //se recorre el arbol
             huff(huffman.getRaiz(), "2");
-           //se pasa el texto a binario
+            //se pasa el texto a binario
             String tempo = ((Caracter) codes.get(codes.length - 1)).getCode();
             tempo += "1";
             ((Caracter) codes.get(codes.length - 1)).setCode(tempo);
@@ -1895,7 +1898,8 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             int cont = 0;
-            String comprimido = "", acum2 = "";
+            String acum2 = "";
+            comprimido = "";
             for (int i = 0; i < acumulador.length(); i++) {
                 if (cont == 8) {
                     int exp = 7;
@@ -1937,6 +1941,25 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ocurrio un error");
         }
+        File file = null;
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        try {
+            file = new File("./texto.txt");
+            fw = new FileWriter(file, true);
+            bw = new BufferedWriter(fw);
+            bw.write(comprimido);
+            bw.newLine();
+            bw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            bw.close();
+            fw.close();
+        } catch (Exception e) {
+        }
+
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
@@ -2296,7 +2319,7 @@ public class Main extends javax.swing.JFrame {
                     arreglo[i] = 500000;
                 }
                 arreglo[origin - 1] = 0;
-                
+
                 for (int i = 0; i < Dijnodos.get(origin - 1).getArista().size(); i++) {
                     int weigth = Dijnodos.get(origin - 1).getArista().get(i).getPeso(), destiny = Dijnodos.get(origin - 1).getArista().get(i).getDestino();
                     arreglo[destiny - 1] = weigth;
@@ -2318,7 +2341,7 @@ public class Main extends javax.swing.JFrame {
                             posicion = i;
                         }
                     }
-                    
+
                     Dijnodos.get(posicion).setVisitado(true);
                     if (Dijnodos.get(posicion).getArista().isEmpty()) {
                         controlar = true;
@@ -2749,19 +2772,19 @@ public class Main extends javax.swing.JFrame {
             }
         }
         //arreglo.remove(arreglo.size() - 1);
-        int optimo = minimo.size()-1;
+        int optimo = minimo.size() - 1;
         int cont = 0, cont2 = 0;
         int costo = 0;
         for (int i = 0; i < arreglo.size(); i++) {
             if (cont == optimo) {
                 break;
-            }  
+            }
             if (arreglo.get(i).getPeso() != 0) {
                 cont++;
                 costo += arreglo.get(i).getPeso();
             }
             cont2++;
-        }      
+        }
         JOptionPane.showMessageDialog(this, "El costo minimo es de: " + costo);
         //se muestra el arbol de expansion minima
         Graphics g = dibujo3.getGraphics();
